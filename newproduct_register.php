@@ -64,6 +64,11 @@
                         <td>구매 링크</td>
                         <td><input type = "text" name = "purchase_link" size=50 maxlength=1000></td>
                         </tr>
+                 
+                        <tr>
+                        <td>사진 파일</td>
+                        <td><input type = "file" name = "file" ></td>
+                        </tr>
 
                         </table>
 
