@@ -31,7 +31,18 @@
 
 <body>
 
-
+        <?php
+                session_start();
+                $URL = "./recipe_board.php";
+                if(!isset($_SESSION['userid'])) {
+        ?>
+                <script>
+                        alert("로그인이 필요합니다");
+                        location.replace("<?php echo $URL?>");
+                </script>
+        <?php
+                }
+        ?>
         <form method = "post" action = "recipe_register_action.php">
         <table  style="padding-top:50px" align = center width=700 border=0 cellpadding=2 >
                 <tr>
