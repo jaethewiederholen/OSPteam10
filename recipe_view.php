@@ -80,7 +80,8 @@ width: 500px;
                 $query = "SELECT title, content, date, hit, id FROM recipe WHERE number =$number;";
                 $result = mysqli_query($connect, $query);
                 $rows = mysqli_fetch_assoc($result);
-                $hit = "UPDATE board SET hit=hit+1 WHERE number=$number";
+                
+                $hit = "UPDATE recipe SET hit=hit+1 WHERE number=$number";
                 $connect->query($hit);
         ?>
  
@@ -106,7 +107,8 @@ width: 500px;
         <div class="view_btn">
                 <button class="view_btn1" onclick="location.href='./recipe_board.php'">목록으로</button>
                 <button class="view_btn1" onclick="location.href='./recipe_modify.php?number=<?=$number?>?>'">수정</button>
-                <button class="view_btn1" onclick="location.href='./recipe_delete.php?number=<?=$number?>?>'">삭제</button>
+                <button class="view_btn1" onclick="location.href='./recipe_delete_action.php?number=<?=$number?>?>'">삭제</button>
         </div>
 </body>
 </html>
+
