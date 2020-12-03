@@ -1,8 +1,8 @@
 <?php
     $connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die ("connect fail");
-    $number = $_GET[number];
-    $title = $_GET[title];
-    $content = $_GET[content];
+    $number = $_POST[number];
+    $title = $_POST[title];
+    $content = $_POST[content];
     $date = date('Y-m-d H:i:s');
     $query = "UPDATE recipe SET title='$title', content='$content', date='$date' WHERE number=$number";
     $result = mysqli_query($connect, $query);
