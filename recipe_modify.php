@@ -1,7 +1,7 @@
 <?php    
                 $connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die("connect fail");
-                $id = $_GET[id];
-                $number = $_GET[number];
+                $id = $_GET['id'];
+                $number = $_GET['number'];
                 $query = "SELECT title, content, date, id FROM recipe WHERE number=$number";
                 $result = mysqli_query($connect, $query);
                 $rows = mysqli_fetch_assoc($result);
@@ -22,7 +22,7 @@
         <?php   }
                 else if($_SESSION['userid']==$usrid) {
         ?>
-        <form method = "get" action = "recipe_modify_action.php">
+        <form method = "post" action = "recipe_modify_action.php">
         <table  style="padding-top:50px" align = center width=700 border=0 cellpadding=2 >
                 <tr>
                 <td height=20 align= center bgcolor=#ccc><font color=white> 레시피 수정</font></td>
