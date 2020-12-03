@@ -22,11 +22,15 @@ else{
               $price=$row[3];
               $purchase_link=$row[4];
               $youtube_link=$row[5];
+              $filename=$row[6];
+              $imgurl = "http://127.0.0.1/uploads/".$filename;
+             
              echo "상품이름: ".$name."<br>";
              echo "설명: ".$content."<br>";
              echo "가격: ".$price."<br>";
-             echo "유튜브리뷰 링크: ".$youtube_link."<br>";
-             echo "구매처 링크: ".$purchase_link."<br><br>";
+             echo "리뷰링크  "; ?><a href="<?php echo $youtube_link?>">바로가기</a><br>
+      <?php  echo "구매처링크  "; ?><a href="<?php echo $purchase_link?>">바로가기</a><br>
+      <?php  echo "<br>";
           }
       }
       else{
