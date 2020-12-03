@@ -8,7 +8,14 @@
                 $content = $_POST['content']; 
                 $youtube_link = $_POST['youtube_link'];
                 $purchase_link = $_POST['purchase_link'];             
-                $date = date('Y-m-d H:i:s');             
+                $date = date('Y-m-d H:i:s');   
+  
+                $tmpfile =  $_FILES['file']['tmp_name'];
+                $o_name = $_FILES['file']['name'];
+                $filename = iconv("UTF-8", "EUC-KR",$_FILES['file']['name']);
+                $folder = "../../upload/".$filename;
+                move_uploaded_file($tmpfile,$folder);
+  
                 $URL = './newproduct_view.php';               
  
                 $connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die("fail");
@@ -22,7 +29,7 @@
                         exit();
                 }
 
-                $query2 = "INSERT INTO newproduct(idx, name, content, price, youtube_link, purchase_link, date) VALUES (null, '$name', '$content', '$price', '$youtube_link', '$purchase_link', '$date')";
+                $query2 = "INSERT INTO newproduct(idx, name, content, price, youtube_link, purchase_link, date) VALUES (null, '$name', '$content', '$price', '$youtube_link', '$purchase_link', '$date', '$o_name')";
                 $result1 = mysqli_query($connect, $query2);
                 if($result1){
 ?>                  <script>
