@@ -38,20 +38,18 @@
                 $result = mysqli_query($connect, $query);
                 $total = mysqli_num_rows($result);
                 
-                /*
                 session_start();
  
                 if(isset($_SESSION['userid'])) {
                         echo $_SESSION['userid'];?>님 안녕하세요
+                        <button onclick="location.href='./logout.php'">로그아웃</button>
                         <br/>
-        <?php
+                <?php
                 }
                 else {
-        ?>              <button onclick="location.href='./login.php'">로그인</button>
+                ?>      <button onclick="location.href='./login.php'">로그인</button>
                         <br />
-        <?php   }
-        ?> 
-        */
+                <?php }
  
         ?>
         <h2 align=center>레시피 게시판</h2>
