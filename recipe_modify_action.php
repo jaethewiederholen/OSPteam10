@@ -1,16 +1,17 @@
 <?php
-    $connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die ("connect fail");
-    $number = $_POST[number];
-    $title = $_POST[title];
-    $content = $_POST[content];
+    $connect = mysqli_connect("127.0.0.1","team10","team10","team10");
+    $number = $_POST['number'];
+    $title = $_POST['title'];
+    $ingredient = $_POST['ingredient'];
+    $content = $_POST['content'];
     $date = date('Y-m-d H:i:s');
-    $query = "UPDATE recipe SET title='$title', content='$content', date='$date' WHERE number=$number";
-    $result = mysqli_query($connect, $query);
+    $query = "UPDATE recipe set title='$title', ingredient='$ingredient', content='$content', date='$date' WHERE number=$number";
+    $result = $connect->query($query);
     if($result) {
 ?>
         <script>
             alert("수정되었습니다.");
-            location.replace("./recipe_view?number=<?=$number?>");
+            location.replace("./recipe_view_privacy.php?number=<?=$number?>");
         </script>
 <?php    }
     else {

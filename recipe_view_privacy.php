@@ -166,7 +166,6 @@ border-radius: 10px;
 
                 <td class="view_hit">조회수</td>
                 <td class="view_hit2"><?php echo $rows['hit']?></td>
-
         </tr>
 
         <tr>
@@ -183,6 +182,8 @@ border-radius: 10px;
         <!-- 목록으로 -->
         <div class="view_btn">
                 <button class="view_btn1" onclick="location.href='./recipe_board.php'">목록으로</button>
+                <button class="view_btn1" onclick="location.href='./recipe_modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">수정</button>
+                <button class="view_btn1" onclick="location.href='./recipe_delete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">삭제</button>
         </div>
 </body>
 </html>

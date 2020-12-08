@@ -81,22 +81,9 @@ text-decoration:none
 <p class="ba1"></p>
 <p class="desc">BIG5 편의점의 이달의 신상품을 확인하세요!</p>
 <main class="ma">
-
-
-<form action="newproduct_view_search.php" method='post'>
-  <select name="type">
-    <option value="0"> 전체
-    <option value="식품"> 식품
-    <option value="음료"> 음료
-    <option value="스낵"> 스낵
-    <option value="술"> 술
-    <option value="생활용품"> 생활용품
-  </select>
-  상품이름 <input type=text name="name">
-  <input type = submit value="검색">
-</form>
-
 <?php
+$type=$_POST['type'];
+$name=$_POST['name'];
 $connect = mysqli_connect("127.0.0.1","team10","team10","team10");
 if(mysqli_connect_errno()){
       printf("Connect failed: %s\n", mysqli_connect_errno());
@@ -104,7 +91,9 @@ if(mysqli_connect_errno()){
 }
 else{ 
 
-        $sql = "SELECT * FROM newproduct";
+        $sql = "SELECT * FROM newproduct WHERE 1";
+        if($name) $sql .= " and name like '%$name%'";
+        if($type!="0") $sql .= " and type = '$type'";
         $res=mysqli_query($connect,$sql);
         if($res){
            while ($row=mysqli_fetch_array($res)){
@@ -118,9 +107,11 @@ else{
               $filename=$row[8];
               $type=$row[9]; ?>
 
-            
-
-      <?php  echo "<br><img src= ".$filename." width=400p height=400p><br>";
+            <form method="post" action="like_action.php">
+            <input type="checkbox" style='zoom: 2.0;'>
+            <input type="submit" value="찜하기">
+            </form>
+       <?php echo "<br><img src= ".$filename." width=400p height=400p><br>";
              echo "업데이트: ".$date."<br>";
              echo "상품이름: ".$name."<br>";
              echo "품목: ".$type."<br>";
