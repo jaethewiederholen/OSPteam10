@@ -2,8 +2,8 @@
 $id = $_POST['id'];
 $pass=$_POST['pass'];
 
-$con = mysqli_connect("localhost","root", "kjy456852", "osp");
-$sql = "SELECT * FROM members WHERE id='$id'";
+$con = mysqli_connect("localhost","team10", "team10", "team10");
+$sql = "SELECT * FROM member WHERE id='$id'";
 
 $result = mysqli_query($con, $sql);
 $num_match= mysqli_num_rows($result);
@@ -35,7 +35,7 @@ else {
     $_SESSION["userid"]=$row["id"];
     echo("
     <script>
-    location.href='home.html';
+    location.href='home.php';
     </script>");
   }
 }

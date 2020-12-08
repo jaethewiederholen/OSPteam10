@@ -55,12 +55,19 @@
             <input id="pass" type="password" class="input" data-type="password" name="userpw">
           </div>
           <div class="group">
-            <label for="name" class="label">이름</label>
-            <input id="name" type="text" class="input" name="username">
+            <label for="radios" class="label">성별</label>
+            <div id=radios class="form-check">
+            <input class="form-check-input" type="radio" id="male" name="sex" value="male">
+            <label class="form-check-label" for="male">남성</label>
+            <input class="form-check-input" type="radio" id="female" name="sex" value="female">
+            <label class="form-check-label" for="female">여성</label>
+            <input class="form-check-input" type="radio" id="other" name="sex" value="other">
+            <label class="form-check-label" for="other">기타</label>
+          </div>
           </div>
           <div class="group">
-            <label for="email" class="label">이메일</label>
-            <input id="email" type="text" class="input" name="useremail">
+            <label for="age" class="label">나이</label>
+            <input id="age" type="number" class="input" name="age">
           </div>
           <div class="bt">
             <input type="submit" class="button" value="가입하기">
