@@ -48,26 +48,26 @@ box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
 .g1{
 }
 .g2{
-font-family: Roboto;
+font-family: Noto Serif Telugu;
 font-size: 23px;
 text-align: center;
 color: #000000;
 }
 .g3{
-font-family: Roboto;
-font-size: 16px;
+font-family: Noto Serif Telugu;
+font-size: 15px;
 color: #000000;
 }
 .g4{
-font-family: Roboto;
-font-size: 16px;
+font-family: Noto Serif Telugu;
+font-size: 15px;
 color: #000000;
 }
 .recipe_Btn{
 padding: 1%;
 border: 0px;
 background: #B3DD7D;
-font-family: Roboto;
+font-family: Noto Serif Telugu;
 font-size: 23px;
 color: #000000;
 }
@@ -181,8 +181,8 @@ while($rows = mysqli_fetch_assoc($result)){
 <td class="ingbox">
   <div class="g1"></div>
   <div class="g2"><a href = "recipe_view.php?number=<?php echo $rows['number']?>"><?php echo $rows['title']?></a></div>
-  <div class="g3"><?php echo $rows['id']?></div>
-  <div class="g4"><?php echo $rows['ingredient']?></div>
+  <div class="g3">작성자: <?php echo $rows['id']?></div>
+  <div class="g4">재료: <?php echo $rows['ingredient']?></div>
 </td>
 <td></td>
 <?php
@@ -195,8 +195,8 @@ if($rows = mysqli_fetch_assoc($result)){
 <td class="ingbox">
   <div class="g1"></div>
   <div class="g2"><a href = "recipe_view.php?number=<?php echo $rows['number']?>"><?php echo $rows['title']?></a></div>
-  <div class="g3"><?php echo $rows['id']?></div>
-  <div class="g4"><?php echo $rows['ingredient']?></div>
+  <div class="g3">작성자: <?php echo $rows['id']?></div>
+  <div class="g4">재료: <?php echo $rows['ingredient']?></div>
 </td>
 <td></td>
 <?php
@@ -212,8 +212,8 @@ if($rows = mysqli_fetch_assoc($result)){
 <td class="ingbox">
   <div class="g1"></div>
   <div class="g2"><a href = "recipe_view.php?number=<?php echo $rows['number']?>"><?php echo $rows['title']?></a></div>
-  <div class="g3"><?php echo $rows['id']?></div>
-  <div class="g4"><?php echo $rows['ingredient']?></div>
+  <div class="g3">작성자: <?php echo $rows['id']?></div>
+  <div class="g4">재료: <?php echo $rows['ingredient']?></div>
 </td>
 <td></td>
 </tr>
