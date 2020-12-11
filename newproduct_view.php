@@ -23,6 +23,184 @@ text-align: center;
 .ma{
 background: #F7FFF2;
 }
+.tinyba{
+border: 1px solid #000000;
+margin-bottom: 1.5%;
+margin-top: -0.5%;
+width: 100%;
+}/**********추가부분***********/
+/*----수정이후(시작)----*/
+.outnpbox{
+width: 100%;
+margin-top: 3%;
+}
+.nppyeon{
+padding-bottom: 3px;
+padding-left: 3px;
+font-family: Noto Serif Telugu;
+font-weight: bold;
+font-size: 25px;
+color: #000000;
+}
+.npbox{
+background: rgba(234,175,175,0.25);
+}
+.leftnp{
+width: 15%;
+}
+.npimg{
+width: 15%;
+text-align: center;
+}
+.npimg img{
+position: absoulte;
+width: 170px;
+height: 170px;
+table-layout: fixed;
+}
+.npname{
+font-family: Noto Serif Telugu;
+font-weight: bold;
+font-size: 20px;
+color: #000000;
+}
+.picknp{
+width: 5%;
+}
+.heart{
+width: 20px;
+height: 20px;
+background: #ea2027;
+position: relative;
+transform: rotate(45deg);
+}
+.heart::before,
+.heart::after {
+content: "";
+width: 20px;
+height: 20px;
+position: absolute;
+border-radius: 50%;
+background: #ea2027;
+}
+.heart::before {
+left: -50%;
+}
+.heart::after {
+top: -50%;
+}
+.rightnp{
+width: 15%;
+}
+.nppricet{
+font-family: Noto Serif Telugu;
+font-size: 18px;
+color: #000000;
+width: 10%;
+}
+.nppricep{
+font-family: Noto Serif Telugu;
+font-size: 18px;
+color: #000000;
+with: 50%;
+}
+.npdesct{
+font-family: Noto Serif Telugu;
+font-size: 18px;
+color: #000000;
+}
+.npdescp{
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: wrap;
+height: 70px;
+padding-top: 15px;
+padding-bottom: 3px;
+display: block;
+}
+.npglink1{
+margin-left: 20%;
+padding: 1%;
+float: left;
+background: rgba(234,175,175,0.75);
+border-radius: 50px;
+}
+.npglink2{
+margin-right: 5%;
+padding: 1%;
+float: right;
+background: rgba(234,175,175,0.75);
+border-radius: 50px;
+}
+.npbox2{
+background: rgba(255,254,163,0.25);
+}
+.npg2link1{
+margin-left: 20%;
+padding: 1%;
+float: left;
+background: rgba(255,254,163,0.75);
+border-radius: 50px;
+}
+.npg2link2{
+margin-right: 5%;
+padding: 1%;
+float: right;
+background: rgba(255,254,163,0.75);
+border-radius: 50px;
+}
+.npbox3{
+background: rgba(175,234,223,0.25);
+}
+.npg3link1{
+margin-left: 20%;
+padding: 1%;
+float: left;
+background: rgba(175,234,223,0.75);
+border-radius: 50px;
+}
+.npg3link2{
+margin-right: 5%;
+padding: 1%;
+float: right;
+background: rgba(175,234,223,0.75);
+border-radius: 50px;
+}
+.npbox4{
+background: rgba(179,181,232,0.25);
+}
+.npg4link1{
+margin-left: 20%;
+padding: 1%;
+float: left;
+background: rgba(179,181,232,0.75);
+border-radius: 50px;
+}
+.npg4link2{
+margin-right: 5%;
+padding: 1%;
+float: right;
+background: rgba(179,181,232,0.75);
+border-radius: 50px;
+}
+.npbox5{
+background: rgba(215,163,206,0.25);
+}
+.npg5link1{
+margin-left: 20%;
+padding: 1%;
+float: left;
+background: rgba(215,163,206,0.75);
+border-radius: 50px;
+}
+.npg5link2{
+margin-right: 5%;
+padding: 1%;
+float: right;
+background: rgba(215,163,206,0.75);
+border-radius: 50px;
+}
+/*----수정이후(끝)----*/
 .ba1{
 background: #B3E495;
 height: 20px;
@@ -81,8 +259,8 @@ text-decoration:none
 <p class="ba1"></p>
 <p class="desc">BIG5 편의점의 이달의 신상품을 확인하세요!</p>
 <main class="ma">
-
-
+<div class="tinyba"></div><!---------추가부분---------->
+<!----수정이전(시작)
 <form action="newproduct_view_search.php" method='post'>
   <select name="type">
     <option value="0"> 전체
@@ -97,12 +275,12 @@ text-decoration:none
 </form>
 
 <?php
-$connect = mysqli_connect("localhost","team10","team10","team10");
+$connect = mysqli_connect("127.0.0.1","team10","team10","team10");
 if(mysqli_connect_errno()){
       printf("Connect failed: %s\n", mysqli_connect_errno());
       exit();
 }
-else{
+else{ 
 
         $sql = "SELECT * FROM newproduct";
         $res=mysqli_query($connect,$sql);
@@ -118,7 +296,7 @@ else{
               $filename=$row[8];
               $type=$row[9]; ?>
 
-
+            
 
       <?php  echo "<br><img src= ".$filename." width=400p height=400p><br>";
              echo "업데이트: ".$date."<br>";
@@ -138,12 +316,204 @@ else{
    }
 mysqli_close($connect);
 ?>
+수정이전(끝)----->
+<!----수정이후(시작)----->
+<!-지에스25->
+<table class="outnpbox" cellspacing="0" cellpadding="0">
+<tr>
+<td></td>
+<td class="nppyeon">GS25</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tbody class="npbox">
+<tr>
+<td class="leftnp" rowspan="4" style="text-align:center"><img src="./lview.png" height="50px"></td>
+<td class="npimg" rowspan="4"><img src="http://img.danawa.com/prod_img/500000/246/939/img/8939246_1.jpg"></td>
+<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp상품이름</td>
+<td class="picknp"></br><p class="heart"></p></td>
+<td class="leftnp" rowspan="4" style="text-align:center"><img src="./rview.png" height="50px"></td>
+</tr>
+<tr>
+<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
+<td class="nppricep">100000</td>
+<td></td>
+</tr>
+<tr>
+<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
+<td class="npdescp">상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명(최대90자)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<div class="npglink1">&nbsp상품 구매하러 가기 >&nbsp</div>
+<div class="npglink2">&nbsp유투브 리뷰영상 보러가기 >&nbsp</div></br></br>
+</td>
+</tr>
+</tbody>
+</table>
+<!-씨유->
+<table class="outnpbox" cellspacing="0" cellpadding="0">
+<tr>
+<td></td>
+<td class="nppyeon">CU</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tbody class="npbox2">
+<tr>
+<td class="leftnp" rowspan="4" style="text-align:center"><img src="./lview.png" height="50px"></td>
+<td class="npimg" rowspan="4"><img src="http://img.danawa.com/prod_img/500000/246/939/img/8939246_1.jpg"></td>
+<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp상품이름</td>
+<td class="picknp"></br><p class="heart"></p></td>
+<td class="leftnp" rowspan="4" style="text-align:center"><img src="./rview.png" height="50px"></td>
+</tr>
+<tr>
+<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
+<td class="nppricep">100000</td>
+<td></td>
+</tr>
+<tr>
+<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
+<td class="npdescp">상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명(최대90자)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<div class="npg2link1">&nbsp상품 구매하러 가기 >&nbsp</div>
+<div class="npg2link2">&nbsp유투브 리뷰영상 보러가기 >&nbsp</div></br></br>
+</td>
+</tr>
+</tbody>
+</table>
+<!-7일레븐->
+<table class="outnpbox" cellspacing="0" cellpadding="0">
+<tr>
+<td></td>
+<td class="nppyeon">7-ELEVEN</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tbody class="npbox3">
+<tr>
+<td class="leftnp" rowspan="4" style="text-align:center"><img src="./lview.png" height="50px"></td>
+<td class="npimg" rowspan="4"><img src="http://img.danawa.com/prod_img/500000/246/939/img/8939246_1.jpg"></td>
+<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp상품이름</td>
+<td class="picknp"></br><p class="heart"></p></td>
+<td class="leftnp" rowspan="4" style="text-align:center"><img src="./rview.png" height="50px"></td>
+</tr>
+<tr>
+<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
+<td class="nppricep">100000</td>
+<td></td>
+</tr>
+<tr>
+<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
+<td class="npdescp">상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명(최대90자)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<div class="npg3link1">&nbsp상품 구매하러 가기 >&nbsp</div>
+<div class="npg3link2">&nbsp유투브 리뷰영상 보러가기 >&nbsp</div></br></br>
+</td>
+</tr>
+</tbody>
+</table>
+<!-이마트->
+<table class="outnpbox" cellspacing="0" cellpadding="0">
+<tr>
+<td></td>
+<td class="nppyeon">E-MART24</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tbody class="npbox4">
+<tr>
+<td class="leftnp" rowspan="4" style="text-align:center"><img src="./lview.png" height="50px"></td>
+<td class="npimg" rowspan="4"><img src="http://img.danawa.com/prod_img/500000/246/939/img/8939246_1.jpg"></td>
+<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp상품이름</td>
+<td class="picknp"></br><p class="heart"></p></td>
+<td class="leftnp" rowspan="4" style="text-align:center"><img src="./rview.png" height="50px"></td>
+</tr>
+<tr>
+<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
+<td class="nppricep">100000</td>
+<td></td>
+</tr>
+<tr>
+<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
+<td class="npdescp">상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명(최대90자)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<div class="npg4link1">&nbsp상품 구매하러 가기 >&nbsp</div>
+<div class="npg4link2">&nbsp유투브 리뷰영상 보러가기 >&nbsp</div></br></br>
+</td>
+</tr>
+</tbody>
+</table>
+<!-미니스톱->
+<table class="outnpbox" cellspacing="0" cellpadding="0">
+<tr>
+<td></td>
+<td class="nppyeon">MINISTOP</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tbody class="npbox5">
+<tr>
+<td class="leftnp" rowspan="4" style="text-align:center"><img src="./lview.png" height="50px"></td>
+<td class="npimg" rowspan="4"><img src="http://img.danawa.com/prod_img/500000/246/939/img/8939246_1.jpg"></td>
+<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp상품이름</td>
+<td class="picknp"></br><p class="heart"></p></td>
+<td class="leftnp" rowspan="4" style="text-align:center"><img src="./rview.png" height="50px"></td>
+</tr>
+<tr>
+<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
+<td class="nppricep">100000</td>
+<td></td>
+</tr>
+<tr>
+<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
+<td class="npdescp">상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명(최대90자)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<div class="npg5link1">&nbsp상품 구매하러 가기 >&nbsp</div>
+<div class="npg5link2">&nbsp유투브 리뷰영상 보러가기 >&nbsp</div></br></br>
+</td>
+</tr>
+</tbody>
+</table>
 
+</br></br>
+<!----수정이후(끝)----->
+<!----덮어쓰기(시작)----->
 <footer>
 	<p class="ba2"></p>
+</main>
 	<p class="fo">
 	&copy; Team10
 	</p>
-<footer>
+</footer>
 </body>
 </html>
+<!----덮어쓰기(끝)----->
