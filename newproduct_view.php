@@ -258,9 +258,8 @@ text-decoration:none
 <p class="desc">BIG5 편의점의 이달의 신상품을 확인하세요!</p>
 <main class="ma">
 <div class="tinyba"></div>
-<form action="newproduct_view_search.php" method='post'>
+<form action='newproduct_view.php' method='post'>
   <select name="chain">
-    <option value="0"> 전체
     <option value="CU"> CU
     <option value="GS25"> GS25
     <option value="7ELEVEN"> 7ELEVEN
@@ -277,11 +276,12 @@ if(mysqli_connect_errno()){
   exit();
 }
 else{
-  $sql = "SELECT * FROM newproduct WHERE 1";
-  if($type!="0") $sql .= " and chain = '$chain'";
+  $sql = "SELECT * FROM newproduct WHERE chain=$chain";
   $res=mysqli_query($connect,$sql);
+  $total = mysqli_num_rows($res);
   if($res){
-    while($row=mysqli_fetch_array($res)){?>
+    while($row=mysqli_fetch_assoc($res)){
+?>
 <table class="outnpbox" cellspacing="0" cellpadding="0">
 <tr>
 <td></td>
@@ -306,7 +306,7 @@ else{
 </tr>
 <tr>
 <td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp"><?php echo $rows['$content']?></td>
+<td class="npdescp"><?php echo $rows['content']?></td>
 <td></td>
 </tr>
 <tr>
@@ -319,8 +319,11 @@ else{
 </tbody>
 </table>
 <?php
+$total--;
+?>
+<?php
       }
-      if($rows = mysqli_fetch_assoc($result)){
+      if($rows = mysqli_fetch_assoc($res)){
 ?>
 <table class="outnpbox" cellspacing="0" cellpadding="0">
 <tr>
@@ -346,7 +349,7 @@ else{
 </tr>
 <tr>
 <td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp"><?php echo $rows['$content']?></td>
+<td class="npdescp"><?php echo $rows['content']?></td>
 <td></td>
 </tr>
 <tr>
@@ -359,8 +362,11 @@ else{
 </tbody>
 </table>
 <?php
+$total--;
+?>
+<?php
       }
-      if($rows = mysqli_fetch_assoc($result)){
+      if($rows = mysqli_fetch_assoc($res)){
 ?>
 <table class="outnpbox" cellspacing="0" cellpadding="0">
 <tr>
@@ -386,7 +392,7 @@ else{
 </tr>
 <tr>
 <td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp"><?php echo $rows['$content']?></td>
+<td class="npdescp"><?php echo $rows['content']?></td>
 <td></td>
 </tr>
 <tr>
@@ -399,8 +405,11 @@ else{
 </tbody>
 </table>
 <?php
+$total--;
+?>
+<?php
       }
-      if($rows = mysqli_fetch_assoc($result)){
+      if($rows = mysqli_fetch_assoc($res)){
 ?>
 <table class="outnpbox" cellspacing="0" cellpadding="0">
 <tr>
@@ -426,7 +435,7 @@ else{
 </tr>
 <tr>
 <td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp"><?php echo $rows['$content']?></td>
+<td class="npdescp"><?php echo $rows['content']?></td>
 <td></td>
 </tr>
 <tr>
@@ -440,7 +449,7 @@ else{
 </table>
 <?php
       }
-      if($rows = mysqli_fetch_assoc($result)){
+      if($rows = mysqli_fetch_assoc($res)){
 ?>
 <table class="outnpbox" cellspacing="0" cellpadding="0">
 <tr>
@@ -466,7 +475,7 @@ else{
 </tr>
 <tr>
 <td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp"><?php echo $rows['$content']?></td>
+<td class="npdescp"><?php echo $rows['content']?></td>
 <td></td>
 </tr>
 <tr>
@@ -478,6 +487,9 @@ else{
 </tr>
 </tbody>
 </table>
+<?php
+$total--;
+?>
 <?php
       }
     }
