@@ -305,8 +305,12 @@ else{
              echo "구매점: ".$chain."<br>";
              echo "설명: ".$content."<br>";
              echo "가격: ".$price."<br>";
-             echo "리뷰링크  "; ?><a href="<?php echo $review_link?>"> >>바로가기</a><br>
-      <?php  echo "구매처링크  "; ?><a href="<?php echo $purchase_link?>"> >>바로가기</a><br>
+             echo "리뷰링크  "; ?>
+<a href="<?php echo $review_link?>"> >>바로가기</a>
+<br>
+      <?php  echo "구매처링크  "; ?>
+<a href="<?php echo $purchase_link?>"> >>바로가기</a>
+<br>
       <?php  echo "<br>";
           }
       }
@@ -318,11 +322,11 @@ mysqli_close($connect);
 ?>
 수정이전(끝)----->
 <!----수정이후(시작)----->
-<!-지에스25->
+<!-CU->
 <table class="outnpbox" cellspacing="0" cellpadding="0">
 <tr>
 <td></td>
-<td class="nppyeon">GS25</td>
+<td class="nppyeon">CU</td>
 <td></td>
 <td></td>
 <td></td>
@@ -355,11 +359,11 @@ mysqli_close($connect);
 </tr>
 </tbody>
 </table>
-<!-씨유->
+<!-GS25->
 <table class="outnpbox" cellspacing="0" cellpadding="0">
 <tr>
 <td></td>
-<td class="nppyeon">CU</td>
+<td class="nppyeon">GS25</td>
 <td></td>
 <td></td>
 <td></td>
@@ -392,11 +396,11 @@ mysqli_close($connect);
 </tr>
 </tbody>
 </table>
-<!-7일레븐->
+<!-7ELEVEN->
 <table class="outnpbox" cellspacing="0" cellpadding="0">
 <tr>
 <td></td>
-<td class="nppyeon">7-ELEVEN</td>
+<td class="nppyeon">7ELEVEN</td>
 <td></td>
 <td></td>
 <td></td>
@@ -433,7 +437,7 @@ mysqli_close($connect);
 <table class="outnpbox" cellspacing="0" cellpadding="0">
 <tr>
 <td></td>
-<td class="nppyeon">E-MART24</td>
+<td class="nppyeon">이마트</td>
 <td></td>
 <td></td>
 <td></td>
@@ -466,11 +470,11 @@ mysqli_close($connect);
 </tr>
 </tbody>
 </table>
-<!-미니스톱->
+<!-공용->
 <table class="outnpbox" cellspacing="0" cellpadding="0">
 <tr>
 <td></td>
-<td class="nppyeon">MINISTOP</td>
+<td class="nppyeon">공용</td>
 <td></td>
 <td></td>
 <td></td>
@@ -506,6 +510,56 @@ mysqli_close($connect);
 
 </br></br>
 <!----수정이후(끝)----->
+<!----재수정작성중(시작)----->
+<?php
+$type=$_POST['type'];
+$name=$_POST['name'];
+$connect = mysqli_connect("127.0.0.1","team10","team10","team10");
+if(mysqli_connect_errno()){
+      printf("Connect failed: %s\n", mysqli_connect_errno());
+      exit();
+}
+else{ 
+
+        $sql = "SELECT * FROM newproduct WHERE 1";
+        if($name) $sql .= " and name like '%$name%'";
+        if($type!="0") $sql .= " and type = '$type'";
+        $res=mysqli_query($connect,$sql);
+        if($res){
+           while ($row=mysqli_fetch_array($res)){
+              $name=$row[2];
+              $chain=$row[1];
+              $content=$row[3];
+              $price=$row[4];
+              $purchase_link=$row[5];
+              $review_link=$row[6];
+              $date=$row[7];
+              $filename=$row[8];
+              $type=$row[9]; ?>
+
+            <form method="post" action="like_action.php">
+            <input type="checkbox" style='zoom: 2.0;'>
+            <input type="submit" value="찜하기">
+            </form>
+       <?php echo "<br><img src= ".$filename." width=400p height=400p><br>";
+             echo "업데이트: ".$date."<br>";
+             echo "상품이름: ".$name."<br>";
+             echo "품목: ".$type."<br>";
+             echo "구매점: ".$chain."<br>";
+             echo "설명: ".$content."<br>";
+             echo "가격: ".$price."<br>";
+             echo "리뷰링크  "; ?><a href="<?php echo $review_link?>"> >>바로가기</a><br>
+      <?php  echo "구매처링크  "; ?><a href="<?php echo $purchase_link?>"> >>바로가기</a><br>
+      <?php  echo "<br>";
+          }
+      }
+      else{
+          printf("Could not select rows: %s\n", mysqli_error($mysqli));
+      }
+   }
+mysqli_close($connect);
+?>
+<!----재수정작성중(끝)----->
 <!----덮어쓰기(시작)----->
 <footer>
 	<p class="ba2"></p>
