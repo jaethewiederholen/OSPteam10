@@ -131,7 +131,7 @@ text-decoration:none;
 <div class="tinyba"></div>
 
 <?php
-$connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die ("connect fail");
+$connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
 $query ="SELECT * from recipe order by number desc";
 $result = mysqli_query($connect, $query);
 $total = mysqli_num_rows($result);                    
