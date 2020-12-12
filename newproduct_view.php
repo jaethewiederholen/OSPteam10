@@ -112,7 +112,7 @@ color: #000000;
 overflow: hidden;
 text-overflow: ellipsis;
 white-space: wrap;
-height: 70px;
+height: 80px;
 padding-top: 15px;
 padding-bottom: 3px;
 display: block;
@@ -129,74 +129,6 @@ margin-right: 5%;
 padding: 1%;
 float: right;
 background: rgba(234,175,175,0.75);
-border-radius: 50px;
-}
-.npbox2{
-background: rgba(255,254,163,0.25);
-}
-.npg2link1{
-margin-left: 20%;
-padding: 1%;
-float: left;
-background: rgba(255,254,163,0.75);
-border-radius: 50px;
-}
-.npg2link2{
-margin-right: 5%;
-padding: 1%;
-float: right;
-background: rgba(255,254,163,0.75);
-border-radius: 50px;
-}
-.npbox3{
-background: rgba(175,234,223,0.25);
-}
-.npg3link1{
-margin-left: 20%;
-padding: 1%;
-float: left;
-background: rgba(175,234,223,0.75);
-border-radius: 50px;
-}
-.npg3link2{
-margin-right: 5%;
-padding: 1%;
-float: right;
-background: rgba(175,234,223,0.75);
-border-radius: 50px;
-}
-.npbox4{
-background: rgba(179,181,232,0.25);
-}
-.npg4link1{
-margin-left: 20%;
-padding: 1%;
-float: left;
-background: rgba(179,181,232,0.75);
-border-radius: 50px;
-}
-.npg4link2{
-margin-right: 5%;
-padding: 1%;
-float: right;
-background: rgba(179,181,232,0.75);
-border-radius: 50px;
-}
-.npbox5{
-background: rgba(215,163,206,0.25);
-}
-.npg5link1{
-margin-left: 20%;
-padding: 1%;
-float: left;
-background: rgba(215,163,206,0.75);
-border-radius: 50px;
-}
-.npg5link2{
-margin-right: 5%;
-padding: 1%;
-float: right;
-background: rgba(215,163,206,0.75);
 border-radius: 50px;
 }
 .ba1{
@@ -258,254 +190,106 @@ text-decoration:none
 <p class="desc">BIG5 편의점의 이달의 신상품을 확인하세요!</p>
 <main class="ma">
 <div class="tinyba"></div>
-<form action='newproduct_view.php' method='post'>
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
   <select name="chain">
-    <option value="CU"> CU
-    <option value="GS25"> GS25
-    <option value="7ELEVEN"> 7ELEVEN
-    <option value="이마트"> 이마트
-    <option value="공용"> 공용
+    <option value="0"> 전체 </option>
+    <option value="CU"> CU </option>
+    <option value="GS25"> GS25 </option>
+    <option value="7ELEVEN"> 7ELEVEN </option>
+    <option value="이마트"> 이마트 </option>
+    <option value="공용"> 공용 </option>
   </select>
   <input type = submit value="검색">
 </form>
+
 <?php
-$chain=$_POST['chain'];
 $connect = mysqli_connect("127.0.0.1","team10","team10","team10");
 if(mysqli_connect_errno()){
-  printf("Connect failed: %s\n", mysqli_connect_errno());
-  exit();
+      printf("Connect failed: %s\n", mysqli_connect_errno());
+      exit();
 }
-else{
-  $sql = "SELECT * FROM newproduct WHERE chain=$chain";
-  $res=mysqli_query($connect,$sql);
-  $total = mysqli_num_rows($res);
-  if($res){
-    while($row=mysqli_fetch_assoc($res)){
-?>
+else{ 
+       $sql = "SELECT * FROM newproduct WHERE 1";
+       $chain = isset($_POST['chain']) ? $_POST['chain'] : false;
+       if($chain) $sql .= " and chain = '$chain'";
+       $res=mysqli_query($connect,$sql);
+        if($res){
+           while ($row=mysqli_fetch_array($res)){
+            $chains=$row[1]; 
+            $name=$row[2];   
+            $content=$row[3];
+            $price=$row[4];
+            $purchase_link=$row[5];
+            $review_link=$row[6];
+            $date=$row[7];
+            $filename=$row[8];
+            $type=$row[9]; ?>
+
 <table class="outnpbox" cellspacing="0" cellpadding="0">
+
 <tr>
 <td></td>
-<td class="nppyeon"><?php echo $rows['chain']?></td>
+<td class="nppyeon"><?php echo "$chains" ?></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
+
 <tbody class="npbox">
+
 <tr>
 <td class="leftnp" rowspan="4"></td>
-<td class="npimg" rowspan="4"><img src="<?php echo $rows['filename']?>"></td>
-<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp<?php echo $rows['name']?></td>
+<td class="npimg" rowspan="4"><img src="<?php echo "$filename" ?>"></td>
+<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp<?php echo "$name" ?></td>
 <td class="picknp"></br><p class="heart"></p></td>
 <td class="leftnp" rowspan="4"></td>
 </tr>
+
 <tr>
 <td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
-<td class="nppricep"><?php echo $rows['price']?></td>
+<td class="nppricep"><?php echo "$price" ?></td>
 <td></td>
 </tr>
+
 <tr>
 <td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp"><?php echo $rows['content']?></td>
+<td class="npdescp"><?php echo "$content" ?></td>
 <td></td>
 </tr>
+
 <tr>
 <td></td>
 <td colspan="2">
-<div class="npglink1"><a href="<?php echo $rows['purchase_link']?>">&nbsp상품 구매하러 가기 >&nbsp</a></div>
-<div class="npglink2"><?php echo $rows['review_link']?>&nbsp유투브 리뷰영상 보러가기 >&nbsp</a></div></br></br>
+<div class="npglink1"><a href="<?php echo "$purchase_link" ?>">&nbsp상품 구매하러 가기 >&nbsp</a></div>
+<div class="npglink2"><a href="<?php echo "$review_link"?>">&nbsp유투브 리뷰영상 보러가기 >&nbsp</a></div></br></br>
 </td>
 </tr>
+
 </tbody>
+
 </table>
+
 <?php
-$total--;
-?>
-<?php
+          }
+      }    
+      else{
+          printf("Could not select rows: %s\n", mysqli_error($mysqli));
       }
-      if($rows = mysqli_fetch_assoc($res)){
-?>
-<table class="outnpbox" cellspacing="0" cellpadding="0">
-<tr>
-<td></td>
-<td class="nppyeon"><?php echo $rows['chain']?></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tbody class="npbox2">
-<tr>
-<td class="leftnp" rowspan="4"></td>
-<td class="npimg" rowspan="4"><img src="<?php echo $rows['filename']?>"></td>
-<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp<?php echo $rows['name']?></td>
-<td class="picknp"></br><p class="heart"></p></td>
-<td class="leftnp" rowspan="4"></td>
-</tr>
-<tr>
-<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
-<td class="nppricep"><?php echo $rows['price']?></td>
-<td></td>
-</tr>
-<tr>
-<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp"><?php echo $rows['content']?></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td colspan="2">
-<div class="npg2link1"><a href="<?php echo $rows['purchase_link']?>">&nbsp상품 구매하러 가기 >&nbsp</a></div>
-<div class="npg2link2"><?php echo $rows['review_link']?>&nbsp유투브 리뷰영상 보러가기 >&nbsp</a></div></br></br>
-</td>
-</tr>
-</tbody>
-</table>
-<?php
-$total--;
-?>
-<?php
-      }
-      if($rows = mysqli_fetch_assoc($res)){
-?>
-<table class="outnpbox" cellspacing="0" cellpadding="0">
-<tr>
-<td></td>
-<td class="nppyeon"><?php echo $rows['chain']?></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tbody class="npbox3">
-<tr>
-<td class="leftnp" rowspan="4"></td>
-<td class="npimg" rowspan="4"><img src="<?php echo $rows['filename']?>"></td>
-<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp<?php echo $rows['name']?></td>
-<td class="picknp"></br><p class="heart"></p></td>
-<td class="leftnp" rowspan="4"></td>
-</tr>
-<tr>
-<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
-<td class="nppricep"><?php echo $rows['price']?></td>
-<td></td>
-</tr>
-<tr>
-<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp"><?php echo $rows['content']?></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td colspan="2">
-<div class="npg3link1"><a href="<?php echo $rows['purchase_link']?>">&nbsp상품 구매하러 가기 >&nbsp</a></div>
-<div class="npg3link2"><?php echo $rows['review_link']?>&nbsp유투브 리뷰영상 보러가기 >&nbsp</a></div></br></br>
-</td>
-</tr>
-</tbody>
-</table>
-<?php
-$total--;
-?>
-<?php
-      }
-      if($rows = mysqli_fetch_assoc($res)){
-?>
-<table class="outnpbox" cellspacing="0" cellpadding="0">
-<tr>
-<td></td>
-<td class="nppyeon"><?php echo $rows['chain']?></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tbody class="npbox4">
-<tr>
-<td class="leftnp" rowspan="4"></td>
-<td class="npimg" rowspan="4"><img src="<?php echo $rows['filename']?>"></td>
-<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp<?php echo $rows['name']?></td>
-<td class="picknp"></br><p class="heart"></p></td>
-<td class="leftnp" rowspan="4"></td>
-</tr>
-<tr>
-<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
-<td class="nppricep"><?php echo $rows['price']?></td>
-<td></td>
-</tr>
-<tr>
-<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp"><?php echo $rows['content']?></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td colspan="2">
-<div class="npg4link1"><a href="<?php echo $rows['purchase_link']?>">&nbsp상품 구매하러 가기 >&nbsp</a></div>
-<div class="npg4link2"><?php echo $rows['review_link']?>&nbsp유투브 리뷰영상 보러가기 >&nbsp</a></div></br></br>
-</td>
-</tr>
-</tbody>
-</table>
-<?php
-      }
-      if($rows = mysqli_fetch_assoc($res)){
-?>
-<table class="outnpbox" cellspacing="0" cellpadding="0">
-<tr>
-<td></td>
-<td class="nppyeon"><?php echo $rows['chain']?></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tbody class="npbox5">
-<tr>
-<td class="leftnp" rowspan="4"></td>
-<td class="npimg" rowspan="4"><img src="<?php echo $rows['filename']?>"></td>
-<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp<?php echo $rows['name']?></td>
-<td class="picknp"></br><p class="heart"></p></td>
-<td class="leftnp" rowspan="4"></td>
-</tr>
-<tr>
-<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
-<td class="nppricep"><?php echo $rows['price']?></td>
-<td></td>
-</tr>
-<tr>
-<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp"><?php echo $rows['content']?></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td colspan="2">
-<div class="npg5link1"><a href="<?php echo $rows['purchase_link']?>">&nbsp상품 구매하러 가기 >&nbsp</a></div>
-<div class="npg5link2"><?php echo $rows['review_link']?>&nbsp유투브 리뷰영상 보러가기 >&nbsp</a></div></br></br>
-</td>
-</tr>
-</tbody>
-</table>
-<?php
-$total--;
-?>
-<?php
-      }
-    }
-  }
-}
+   }
 mysqli_close($connect);
 ?>
+
 <div class text align="center">
-</br><button type="button" class="recipe_Btn" onClick="location.href='./newproduct_register.php'">&nbsp;&nbsp;글쓰기&nbsp;&nbsp;</br></button></br></br>
+</br><button type="button" class="register_Btn" onClick="location.href='./newproduct_register.php'" align='center'>등록하기</button>
 </div>
+
 <footer>
 	<p class="ba2"></p>
-</main>
 	<p class="fo">
 	&copy; Team10
 	</p>
-</footer>
+<footer>
 </body>
 </html>
