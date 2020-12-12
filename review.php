@@ -45,6 +45,15 @@ include 'db_con.php';
         });
 
       });
+      $('#cvs_select').change(function() {
+        alert('cvs changed');
+      });
+      $('#item_select').change(function() {
+        alert('item changed');
+      });
+      $('#cost_select').change(function() {
+        alert('cost changed');
+      });
     });
 
     </script>
@@ -146,7 +155,7 @@ text-decoration:none
   <div class="search">
     <div class="select">
 
-    <select class="se">
+    <select class="se" id="cvs_select">
       <option selected="">편의점</option>
       <option value="GS25">GS25</option>
       <option value="CU">CU</option>
@@ -155,16 +164,16 @@ text-decoration:none
       <option value="미니스톱">미니스톱</option>
     </select>
 
-    <select class="se">
+    <select class="se" id="item_select">
       <option selected="">품목</option>
       <option value="식품">식품</option>
       <option value="음료">음료</option>
       <option value="스낵">스낵</option>
-      <option value="술">술</option>
+      <option value="아이스크림">아이스크림</option>
       <option value="생활용품">생활용품</option>
     </select>
 
-    <select class="se">
+    <select class="se" id=" cost_select">
       <option selected="">가격대</option>
       <option value="5천원대 이하">5천원대 이하</option>
       <option value="1만원대 이하">1만원대 이하</option>

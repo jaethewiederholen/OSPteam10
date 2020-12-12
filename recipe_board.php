@@ -115,7 +115,7 @@ text-decoration:none;
       환영합니다 <?php echo $_SESSION['userid'];?> 님 &nbsp/
       <a href="logOut.php" id="logout">로그아웃</a>
     <?php
-      } 
+      }
     ?>
     </p>
     <!--네비게이션-->
@@ -134,10 +134,10 @@ text-decoration:none;
 <div class="tinyba"></div><!---------추가부분---------->
 
 <?php
-$connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die ("connect fail");
+$connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
 $query ="SELECT * from recipe order by number desc";
 $result = mysqli_query($connect, $query);
-$total = mysqli_num_rows($result);                    
+$total = mysqli_num_rows($result);
 ?>
 <!---------수정 이전(시작)
 <table align = center>
@@ -152,10 +152,10 @@ $total = mysqli_num_rows($result);
 <td width = "50" align = "center">조회수</td>
 </tr>
 </thead>
- 
+
 <tbody>
 <?/*php
-while($rows = mysqli_fetch_assoc($result)){ 
+while($rows = mysqli_fetch_assoc($result)){
 */?>
 <td width = "50" align = "center"><?/*php echo $total?*/></td>
 <td width = "200" align = "center"><a href = "recipe_view.php?number=<?/*php echo $rows['number']*/?>"><?/*php echo $rows['title']*/?></td>
@@ -174,7 +174,7 @@ $total--;
 <!----수정 이후(시작)----->
 <table class="outgbox">
 <?php
-while($rows = mysqli_fetch_assoc($result)){ 
+while($rows = mysqli_fetch_assoc($result)){
 ?>
 <tr>
 <td></td>
@@ -242,5 +242,3 @@ $total--;
 </body>
 </html>
 <!----덮어쓰기(끝)----->
-
-
