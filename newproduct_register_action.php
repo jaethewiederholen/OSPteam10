@@ -2,15 +2,15 @@
 <head>
 <meta charset="utf-8">
 </head>
-<?php    
-                $name = $_POST['name'];  
-                $type = $_POST['type'];  
-                $chain = $_POST['chain'];                  
-                $price = $_POST['price'];                                          
-                $content = $_POST['content']; 
+<?php
+                $name = $_POST['name'];
+                $type = $_POST['type'];
+                $chain = $_POST['chain'];
+                $price = $_POST['price'];
+                $content = $_POST['content'];
                 $review_link = $_POST['review_link'];
-                $purchase_link = $_POST['purchase_link'];             
-                $date = date('Y-m-d H:i:s');     
+                $purchase_link = $_POST['purchase_link'];
+                $date = date('Y-m-d H:i:s');
 
                 $tmpfile =  $_FILES['file']['tmp_name'];
                 $o_name = $_FILES['file']['name'];
@@ -18,9 +18,9 @@
                 $folder = "../../upload/".$filename;
                 move_uploaded_file($tmpfile,$folder);
 
-                $URL = './newproduct_view.php';               
- 
-                $connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die("fail");
+                $URL = './newproduct_view.php';
+
+                $connect = mysqli_connect("localhost","team10","team10","team10") or die("fail");
 
                 $query1 = "SELECT name FROM newproduct WHERE name='$name'";
                 $result1 = mysqli_query($connect, $query1);
