@@ -28,13 +28,12 @@ border: 1px solid #000000;
 margin-bottom: 1.5%;
 margin-top: -0.5%;
 width: 100%;
-}/**********추가부분***********/
+}
 .ba1{
 background: #B3E495;
 height: 20px;
 width: 100%;
 }
-/*----수정 이후(시작)-----*/
 .outgbox{
 width: 100%;
 border-collapse: separate;
@@ -71,7 +70,6 @@ font-family: Noto Serif Telugu;
 font-size: 23px;
 color: #000000;
 }
-/*----수정 이후(끝)-----*/
 .ba2{
 border: 3px solid #444742;
 margin-top: 2%;
@@ -85,7 +83,6 @@ font-size: 23px;
 margin-bottom: -0.5%;
 margin-top: -0.5%;
 }
-/*----none에;붙이기-----*/
 a{
 color: #000000;
 text-decoration:none;
@@ -131,7 +128,7 @@ text-decoration:none;
 <p class="ba1"></p>
 <p class="desc">편의점 음식으로 만드는 꿀조합 레시피를 확인하세요!</p>
 <main class="ma">
-<div class="tinyba"></div><!---------추가부분---------->
+<div class="tinyba"></div>
 
 <?php
 $connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
@@ -139,39 +136,9 @@ $query ="SELECT * from recipe order by number desc";
 $result = mysqli_query($connect, $query);
 $total = mysqli_num_rows($result);
 ?>
-<!---------수정 이전(시작)
-<table align = center>
 
-<thead align = "center">
-<tr>
-<td width = "50" align="center">번호</td>
-<td width = "200" align = "center">제목</td>
-<td width = "300" align = "center">재료</td>
-<td width = "100" align = "center">작성자</td>
-<td width = "200" align = "center">날짜</td>
-<td width = "50" align = "center">조회수</td>
-</tr>
-</thead>
-
-<tbody>
-<?/*php
-while($rows = mysqli_fetch_assoc($result)){
-*/?>
-<td width = "50" align = "center"><?/*php echo $total?*/></td>
-<td width = "200" align = "center"><a href = "recipe_view.php?number=<?/*php echo $rows['number']*/?>"><?/*php echo $rows['title']*/?></td>
-<td width = "300" align = "center"><?/*php echo $rows['ingredient']*/?></td>
-<td width = "100" align = "center"><?/*php echo $rows['id']*/?></td>
-<td width = "200" align = "center"><?/*php echo $rows['date']*/?></td>
-<td width = "50" align = "center"><?/*php echo $rows['hit']*/?></td>
-</tr>
-<?/*php
-$total--;
-}
-*/?>
-</tbody>
-</table>
-수정 이전(끝)---------->
 <!----수정 이후(시작)----->
+
 <table class="outgbox">
 <?php
 while($rows = mysqli_fetch_assoc($result)){
@@ -227,8 +194,6 @@ $total--;
 }
 ?>
 </table>
-<!----수정 이후(끝)----->
-<!----덮어쓰기(시작)----->
 <div class text align="center">
 </br><button type="button" class="recipe_Btn" onClick="location.href='./recipe_register.php'">&nbsp;&nbsp;글쓰기&nbsp;&nbsp;</br></button></br></br>
 </div>
@@ -240,5 +205,6 @@ $total--;
 	</p>
 </footer>
 </body>
+
 </html>
-<!----덮어쓰기(끝)----->
+

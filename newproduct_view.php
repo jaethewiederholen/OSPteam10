@@ -28,8 +28,7 @@ border: 1px solid #000000;
 margin-bottom: 1.5%;
 margin-top: -0.5%;
 width: 100%;
-}/**********추가부분***********/
-/*----수정이후(시작)----*/
+}
 .outnpbox{
 width: 100%;
 margin-top: 3%;
@@ -113,7 +112,7 @@ color: #000000;
 overflow: hidden;
 text-overflow: ellipsis;
 white-space: wrap;
-height: 70px;
+height: 80px;
 padding-top: 15px;
 padding-bottom: 3px;
 display: block;
@@ -132,75 +131,6 @@ float: right;
 background: rgba(234,175,175,0.75);
 border-radius: 50px;
 }
-.npbox2{
-background: rgba(255,254,163,0.25);
-}
-.npg2link1{
-margin-left: 20%;
-padding: 1%;
-float: left;
-background: rgba(255,254,163,0.75);
-border-radius: 50px;
-}
-.npg2link2{
-margin-right: 5%;
-padding: 1%;
-float: right;
-background: rgba(255,254,163,0.75);
-border-radius: 50px;
-}
-.npbox3{
-background: rgba(175,234,223,0.25);
-}
-.npg3link1{
-margin-left: 20%;
-padding: 1%;
-float: left;
-background: rgba(175,234,223,0.75);
-border-radius: 50px;
-}
-.npg3link2{
-margin-right: 5%;
-padding: 1%;
-float: right;
-background: rgba(175,234,223,0.75);
-border-radius: 50px;
-}
-.npbox4{
-background: rgba(179,181,232,0.25);
-}
-.npg4link1{
-margin-left: 20%;
-padding: 1%;
-float: left;
-background: rgba(179,181,232,0.75);
-border-radius: 50px;
-}
-.npg4link2{
-margin-right: 5%;
-padding: 1%;
-float: right;
-background: rgba(179,181,232,0.75);
-border-radius: 50px;
-}
-.npbox5{
-background: rgba(215,163,206,0.25);
-}
-.npg5link1{
-margin-left: 20%;
-padding: 1%;
-float: left;
-background: rgba(215,163,206,0.75);
-border-radius: 50px;
-}
-.npg5link2{
-margin-right: 5%;
-padding: 1%;
-float: right;
-background: rgba(215,163,206,0.75);
-border-radius: 50px;
-}
-/*----수정이후(끝)----*/
 .ba1{
 background: #B3E495;
 height: 20px;
@@ -259,18 +189,17 @@ text-decoration:none
 <p class="ba1"></p>
 <p class="desc">BIG5 편의점의 이달의 신상품을 확인하세요!</p>
 <main class="ma">
-<div class="tinyba"></div><!---------추가부분---------->
-<!----수정이전(시작)
-<form action="newproduct_view_search.php" method='post'>
-  <select name="type">
-    <option value="0"> 전체
-    <option value="식품"> 식품
-    <option value="음료"> 음료
-    <option value="스낵"> 스낵
-    <option value="술"> 술
-    <option value="생활용품"> 생활용품
+<div class="tinyba"></div>
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
+  <select name="chain">
+    <option value="0"> 전체 </option>
+    <option value="CU"> CU </option>
+    <option value="GS25"> GS25 </option>
+    <option value="7ELEVEN"> 7ELEVEN </option>
+    <option value="이마트"> 이마트 </option>
+    <option value="공용"> 공용 </option>
   </select>
-  상품이름 <input type=text name="name">
   <input type = submit value="검색">
 </form>
 
@@ -281,239 +210,82 @@ if(mysqli_connect_errno()){
       exit();
 }
 else{ 
-
-        $sql = "SELECT * FROM newproduct";
-        $res=mysqli_query($connect,$sql);
+       $sql = "SELECT * FROM newproduct WHERE 1";
+       $chain = isset($_POST['chain']) ? $_POST['chain'] : false;
+       if($chain) $sql .= " and chain = '$chain'";
+       $res=mysqli_query($connect,$sql);
         if($res){
            while ($row=mysqli_fetch_array($res)){
-              $name=$row[2];
-              $chain=$row[1];
-              $content=$row[3];
-              $price=$row[4];
-              $purchase_link=$row[5];
-              $review_link=$row[6];
-              $date=$row[7];
-              $filename=$row[8];
-              $type=$row[9]; ?>
+            $chains=$row[1]; 
+            $name=$row[2];   
+            $content=$row[3];
+            $price=$row[4];
+            $purchase_link=$row[5];
+            $review_link=$row[6];
+            $date=$row[7];
+            $filename=$row[8];
+            $type=$row[9]; ?>
 
-            
+<table class="outnpbox" cellspacing="0" cellpadding="0">
 
-      <?php  echo "<br><img src= ".$filename." width=400p height=400p><br>";
-             echo "업데이트: ".$date."<br>";
-             echo "상품이름: ".$name."<br>";
-             echo "품목: ".$type."<br>";
-             echo "구매점: ".$chain."<br>";
-             echo "설명: ".$content."<br>";
-             echo "가격: ".$price."<br>";
-             echo "리뷰링크  "; ?><a href="<?php echo $review_link?>"> >>바로가기</a><br>
-      <?php  echo "구매처링크  "; ?><a href="<?php echo $purchase_link?>"> >>바로가기</a><br>
-      <?php  echo "<br>";
+<tr>
+<td></td>
+<td class="nppyeon"><?php echo "$chains" ?></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tbody class="npbox">
+
+<tr>
+<td class="leftnp" rowspan="4"></td>
+<td class="npimg" rowspan="4"><img src="<?php echo "$filename" ?>"></td>
+<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp<?php echo "$name" ?></td>
+<td class="picknp"></br><p class="heart"></p></td>
+<td class="leftnp" rowspan="4"></td>
+</tr>
+
+<tr>
+<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
+<td class="nppricep"><?php echo "$price" ?></td>
+<td></td>
+</tr>
+
+<tr>
+<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
+<td class="npdescp"><?php echo "$content" ?></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td colspan="2">
+<div class="npglink1"><a href="<?php echo "$purchase_link" ?>">&nbsp상품 구매하러 가기 >&nbsp</a></div>
+<div class="npglink2"><a href="<?php echo "$review_link"?>">&nbsp유투브 리뷰영상 보러가기 >&nbsp</a></div></br></br>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<?php
           }
-      }
+      }    
       else{
           printf("Could not select rows: %s\n", mysqli_error($mysqli));
       }
    }
 mysqli_close($connect);
 ?>
-수정이전(끝)----->
-<!----수정이후(시작)----->
-<!-지에스25->
-<table class="outnpbox" cellspacing="0" cellpadding="0">
-<tr>
-<td></td>
-<td class="nppyeon">GS25</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tbody class="npbox">
-<tr>
-<td class="leftnp" rowspan="4" style="text-align:center"><img src="./lview.png" height="50px"></td>
-<td class="npimg" rowspan="4"><img src="http://img.danawa.com/prod_img/500000/246/939/img/8939246_1.jpg"></td>
-<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp상품이름</td>
-<td class="picknp"></br><p class="heart"></p></td>
-<td class="leftnp" rowspan="4" style="text-align:center"><img src="./rview.png" height="50px"></td>
-</tr>
-<tr>
-<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
-<td class="nppricep">100000</td>
-<td></td>
-</tr>
-<tr>
-<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp">상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명(최대90자)</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td colspan="2">
-<div class="npglink1">&nbsp상품 구매하러 가기 >&nbsp</div>
-<div class="npglink2">&nbsp유투브 리뷰영상 보러가기 >&nbsp</div></br></br>
-</td>
-</tr>
-</tbody>
-</table>
-<!-씨유->
-<table class="outnpbox" cellspacing="0" cellpadding="0">
-<tr>
-<td></td>
-<td class="nppyeon">CU</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tbody class="npbox2">
-<tr>
-<td class="leftnp" rowspan="4" style="text-align:center"><img src="./lview.png" height="50px"></td>
-<td class="npimg" rowspan="4"><img src="http://img.danawa.com/prod_img/500000/246/939/img/8939246_1.jpg"></td>
-<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp상품이름</td>
-<td class="picknp"></br><p class="heart"></p></td>
-<td class="leftnp" rowspan="4" style="text-align:center"><img src="./rview.png" height="50px"></td>
-</tr>
-<tr>
-<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
-<td class="nppricep">100000</td>
-<td></td>
-</tr>
-<tr>
-<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp">상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명(최대90자)</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td colspan="2">
-<div class="npg2link1">&nbsp상품 구매하러 가기 >&nbsp</div>
-<div class="npg2link2">&nbsp유투브 리뷰영상 보러가기 >&nbsp</div></br></br>
-</td>
-</tr>
-</tbody>
-</table>
-<!-7일레븐->
-<table class="outnpbox" cellspacing="0" cellpadding="0">
-<tr>
-<td></td>
-<td class="nppyeon">7-ELEVEN</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tbody class="npbox3">
-<tr>
-<td class="leftnp" rowspan="4" style="text-align:center"><img src="./lview.png" height="50px"></td>
-<td class="npimg" rowspan="4"><img src="http://img.danawa.com/prod_img/500000/246/939/img/8939246_1.jpg"></td>
-<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp상품이름</td>
-<td class="picknp"></br><p class="heart"></p></td>
-<td class="leftnp" rowspan="4" style="text-align:center"><img src="./rview.png" height="50px"></td>
-</tr>
-<tr>
-<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
-<td class="nppricep">100000</td>
-<td></td>
-</tr>
-<tr>
-<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp">상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명(최대90자)</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td colspan="2">
-<div class="npg3link1">&nbsp상품 구매하러 가기 >&nbsp</div>
-<div class="npg3link2">&nbsp유투브 리뷰영상 보러가기 >&nbsp</div></br></br>
-</td>
-</tr>
-</tbody>
-</table>
-<!-이마트->
-<table class="outnpbox" cellspacing="0" cellpadding="0">
-<tr>
-<td></td>
-<td class="nppyeon">E-MART24</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tbody class="npbox4">
-<tr>
-<td class="leftnp" rowspan="4" style="text-align:center"><img src="./lview.png" height="50px"></td>
-<td class="npimg" rowspan="4"><img src="http://img.danawa.com/prod_img/500000/246/939/img/8939246_1.jpg"></td>
-<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp상품이름</td>
-<td class="picknp"></br><p class="heart"></p></td>
-<td class="leftnp" rowspan="4" style="text-align:center"><img src="./rview.png" height="50px"></td>
-</tr>
-<tr>
-<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
-<td class="nppricep">100000</td>
-<td></td>
-</tr>
-<tr>
-<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp">상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명(최대90자)</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td colspan="2">
-<div class="npg4link1">&nbsp상품 구매하러 가기 >&nbsp</div>
-<div class="npg4link2">&nbsp유투브 리뷰영상 보러가기 >&nbsp</div></br></br>
-</td>
-</tr>
-</tbody>
-</table>
-<!-미니스톱->
-<table class="outnpbox" cellspacing="0" cellpadding="0">
-<tr>
-<td></td>
-<td class="nppyeon">MINISTOP</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tbody class="npbox5">
-<tr>
-<td class="leftnp" rowspan="4" style="text-align:center"><img src="./lview.png" height="50px"></td>
-<td class="npimg" rowspan="4"><img src="http://img.danawa.com/prod_img/500000/246/939/img/8939246_1.jpg"></td>
-<td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp상품이름</td>
-<td class="picknp"></br><p class="heart"></p></td>
-<td class="leftnp" rowspan="4" style="text-align:center"><img src="./rview.png" height="50px"></td>
-</tr>
-<tr>
-<td class="nppricet">&nbsp&nbsp&nbsp&nbsp가격(원)</td>
-<td class="nppricep">100000</td>
-<td></td>
-</tr>
-<tr>
-<td class="npdesct">&nbsp&nbsp&nbsp&nbsp상품설명</td>
-<td class="npdescp">상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명상품설명(최대90자)</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td colspan="2">
-<div class="npg5link1">&nbsp상품 구매하러 가기 >&nbsp</div>
-<div class="npg5link2">&nbsp유투브 리뷰영상 보러가기 >&nbsp</div></br></br>
-</td>
-</tr>
-</tbody>
-</table>
 
-</br></br>
-<!----수정이후(끝)----->
-<!----덮어쓰기(시작)----->
 <footer>
 	<p class="ba2"></p>
-</main>
 	<p class="fo">
 	&copy; Team10
 	</p>
-</footer>
+<footer>
 </body>
 </html>
-<!----덮어쓰기(끝)----->
