@@ -112,7 +112,7 @@ text-decoration:none;
       환영합니다 <?php echo $_SESSION['userid'];?> 님 &nbsp/
       <a href="logOut.php" id="logout">로그아웃</a>
     <?php
-      } 
+      }
     ?>
     </p>
     <!--네비게이션-->
@@ -131,14 +131,17 @@ text-decoration:none;
 <div class="tinyba"></div>
 
 <?php
-$connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die ("connect fail");
+$connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
 $query ="SELECT * from recipe order by number desc";
 $result = mysqli_query($connect, $query);
-$total = mysqli_num_rows($result);                    
+$total = mysqli_num_rows($result);
 ?>
+
+<!----수정 이후(시작)----->
+
 <table class="outgbox">
 <?php
-while($rows = mysqli_fetch_assoc($result)){ 
+while($rows = mysqli_fetch_assoc($result)){
 ?>
 <tr>
 <td></td>
@@ -202,4 +205,6 @@ $total--;
 	</p>
 </footer>
 </body>
+
 </html>
+
