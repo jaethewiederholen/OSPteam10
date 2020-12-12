@@ -204,20 +204,20 @@ text-decoration:none
 </form>
 
 <?php
-$connect = mysqli_connect("127.0.0.1","team10","team10","team10");
+$connect = mysqli_connect("localhost","team10","team10","team10");
 if(mysqli_connect_errno()){
       printf("Connect failed: %s\n", mysqli_connect_errno());
       exit();
 }
-else{ 
+else{
        $sql = "SELECT * FROM newproduct WHERE 1";
        $chain = isset($_POST['chain']) ? $_POST['chain'] : false;
        if($chain) $sql .= " and chain = '$chain'";
        $res=mysqli_query($connect,$sql);
         if($res){
            while ($row=mysqli_fetch_array($res)){
-            $chains=$row[1]; 
-            $name=$row[2];   
+            $chains=$row[1];
+            $name=$row[2];
             $content=$row[3];
             $price=$row[4];
             $purchase_link=$row[5];
@@ -273,7 +273,7 @@ else{
 
 <?php
           }
-      }    
+      }
       else{
           printf("Could not select rows: %s\n", mysqli_error($mysqli));
       }

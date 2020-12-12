@@ -110,7 +110,7 @@ text-decoration:none
                 <option value="">편의점</option>
                 <option value="GS25">GS25</option>
                 <option value="CU">CU</option>
-                <option value="세블일레븐">세븐일레븐</option>
+                <option value="세븐일레븐">세븐일레븐</option>
                 <option value="이마트">이마트</option>
                 <option value="미니스톱">미니스톱</option>
               </select>
