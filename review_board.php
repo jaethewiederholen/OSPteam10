@@ -9,17 +9,57 @@ include 'db_con.php';
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>PyeonReview-리뷰</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script>
     $(document).ready(function(){
       var inisort="default";
+      /*$.post('review_sort.php', { sortby : inisort }, function(data){
+        data=JSON.parse(data);
+        document.getElementById('list_table').innerHTML='<tr><th style="background-color : #eeeeee; text-align:center;">여행</th><th style="background-color : #eeeeee; text-align:center;">제목</th><th style="background-color : #eeeeee; text-align:center;">작성자</th><th style="background-color : #eeeeee; text-align:center;">작성일</th></tr>';
+        //alert("ajax completed: " + data);
+        $.each(data,function(key,val){
+          //alert(val.num);
+          $('#list_table').append('<tbody><tr><td width="100">'+ val.addr + '</td><td width="470" ><span class="read_check" style="cursor:pointer" data-action="./read.php?num='+val.num+'">'+val.title+'</span></td><td width="120">' + val.id + '</td><td width="100">' + val.date + '</td></tr></tbody>');
+          $(".read_check").on("click", function () {
+            var action_url = $(this).attr("data-action");
+            $(location).attr("href",action_url);
+            });
+          });
+
+      });*/
+      $('#sortby').change(function(){
+        var sort = $(this).val();
+
+        $.post("test.php", function(data) { alert("Data Loaded: " + data); });
+        /*$.post('review_sort.php', { sortby : sort }, function(data){
+          data=JSON.parse(data);
+          document.getElementById('list_table').innerHTML='<tr><th style="background-color : #eeeeee; text-align:center;">여행지</th><th style="background-color : #eeeeee; text-align:center;">제목</th><th style="background-color : #eeeeee; text-align:center;">작성자</th><th style="background-color : #eeeeee; text-align:center;">작성일</th></tr>';
+          //alert("ajax completed: " + data);
+          $.each(data,function(key,val){
+            //alert(val.num);
+            $('#list_table').append('<tbody><tr><td width="100">'+ val.addr +'</td><td width="470"><span class="read_check" style="cursor:pointer" data-action="./read.php?num='+val.num+'">'+val.title+'</span></td><td width="120">' + val.id + '</td><td width="100">' + val.date + '</td></tr></tbody>');
+            $(".read_check").on("click", function () {
+              var action_url = $(this).attr("data-action");
+              $(location).attr("href",action_url);
+              });
+            });
+
+        });*/
+
+      });
+    });
+    /*$(document).ready(function(){
+      var inisort="default";
+
       $.post('review_sort.php', { sortby : inisort }, function(data){
+
         data=JSON.parse(data);
         document.getElementById('list_table').innerHTML='<tr><th style="background-color : #eeeeee; text-align:center;">번호</th><th style="background-color : #eeeeee; text-align:center;">제목</th><th style="background-color : #eeeeee; text-align:center;">별점</th><th style="background-color : #eeeeee; text-align:center;">작성자</th><th style="background-color : #eeeeee; text-align:center;">작성일</th></tr>';
         //alert("ajax completed: " + data);
         $.each(data,function(key,val){
           //alert(val.num);
-          $('#list_table').append('<tbody><tr><td width="100">'+ val.num + '</td><td width="470" ><span class="read_check" style="cursor:pointer" data-action="./review_read.php?num='+val.num+'">'+val.title+'</span></td><td width="120">'+val.star+'</td><td width="120">' + val.id + '</td><td width="100">' + val.date + '</td></tr></tbody>');
+          $('#list_table').append('<tbody><tr><td width="100">'+ val.num + '</td><td width="470" ><span class="read_check" style="cursor:pointer" data-action="./read.php?num='+val.num+'">'+val.title+'</span></td><td width="120">'+val.star+'</td><td width="120">' + val.id + '</td><td width="100">' + val.date + '</td></tr></tbody>');
           $(".read_check").on("click", function () {
             var action_url = $(this).attr("data-action");
             $(location).attr("href",action_url);
@@ -35,7 +75,7 @@ include 'db_con.php';
           //alert("ajax completed: " + data);
           $.each(data,function(key,val){
             //alert(val.num);
-          $('#list_table').append('<tbody><tr><td width="100">'+ val.num + '</td><td width="470" ><span class="read_check" style="cursor:pointer" data-action="./review_read.php?num='+val.num+'">'+val.title+'</span></td><td width="120">'+val.star+'</td><td width="120">' + val.id + '</td><td width="100">' + val.date + '</td></tr></tbody>');
+            $('#list_table').append('<tbody><tr><td width="100">'+ val.num + '</td><td width="470" ><span class="read_check" style="cursor:pointer" data-action="./read.php?num='+val.num+'">'+val.title+'</span></td><td width="120">'+val.star+'</td><td width="120">' + val.id + '</td><td width="100">' + val.date + '</td></tr></tbody>');
             $(".read_check").on("click", function () {
               var action_url = $(this).attr("data-action");
               $(location).attr("href",action_url);
@@ -45,8 +85,7 @@ include 'db_con.php';
         });
 
       });
-    });
-
+    });*/
     </script>
 </head>
 <style>
@@ -148,27 +187,27 @@ text-decoration:none
 
     <select class="se">
       <option selected="">편의점</option>
-      <option value="GS25">GS25</option>
-      <option value="CU">CU</option>
-      <option value="세븐일레븐">세븐일레븐</option>
-      <option value="이마트">이마트</option>
-      <option value="미니스톱">미니스톱</option>
+      <option value="1">GS25</option>
+      <option value="2">CU</option>
+      <option value="3">세븐일레븐</option>
+      <option value="4">이마트</option>
+      <option value="5">미니스톱</option>
     </select>
 
     <select class="se">
       <option selected="">품목</option>
-      <option value="식품">식품</option>
-      <option value="음료">음료</option>
-      <option value="스낵">스낵</option>
-      <option value="술">술</option>
-      <option value="생활용품">생활용품</option>
+      <option value="1">식품</option>
+      <option value="2">음료</option>
+      <option value="3">스낵</option>
+      <option value="4">술</option>
+      <option value="5">생활용품</option>
     </select>
 
     <select class="se">
       <option selected="">가격대</option>
-      <option value="5천원대 이하">5천원대 이하</option>
-      <option value="1만원대 이하">1만원대 이하</option>
-      <option value="2만원대 이하">2만원대 이하</option>
+      <option value="1">5천원대 이하</option>
+      <option value="2">1만원대 이하</option>
+      <option value="3">2만원대 이하</option>
     </select>
 
     </div>
@@ -195,7 +234,6 @@ text-decoration:none
 
       </table>
     </div>
-  </div>
 
   <div class = text align="center">
   <br><br><button type="button" class="recipe_Btn" onClick="location.href='./review_write.php'">글쓰기</button>
@@ -206,7 +244,10 @@ text-decoration:none
   	<p class="fo">
   	&copy; Team10
   	</p>
-  </footer>
+  <footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
   </html>

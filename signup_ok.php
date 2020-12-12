@@ -1,6 +1,8 @@
 <?php
   $userid = $_POST['userid'];
   $userpw = $_POST['userpw'];
+  $gender = $_POST['sex'];
+  $age = $_POST['age'];
   $date = date('Y-m-d H:i:s');
 
   $conn = new mysqli("127.0.0.1","team10","team10","team10");
@@ -9,7 +11,7 @@
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "INSERT INTO member(id, pw, date) VALUES ('$userid', '$userpw', '$date')";
+  $sql = "INSERT INTO member(id, pw, gender, age, date) VALUES ('$userid', '$userpw', '$gender', '$age', '$date')";
 
   if ($conn->query($sql) === TRUE) {
     echo " <script>
