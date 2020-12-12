@@ -192,6 +192,7 @@
 	</div>
 </div>
 
+
 <div class text align="center">
 </br><button type="button" class="recipe_Btn" onClick="location.href='./recipe_register.php'">&nbsp;&nbsp;글쓰기&nbsp;&nbsp;</br></button></br></br>
 </div>
