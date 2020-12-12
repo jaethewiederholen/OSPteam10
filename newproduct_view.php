@@ -281,6 +281,10 @@ else{
 mysqli_close($connect);
 ?>
 
+<div class text align="center">
+</br><button type="button" class="register_Btn" onClick="location.href='./newproduct_register.php'" align='center'>등록하기</button>
+</div>
+
 <footer>
 	<p class="ba2"></p>
 	<p class="fo">
