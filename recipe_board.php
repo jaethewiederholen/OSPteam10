@@ -137,8 +137,6 @@ $result = mysqli_query($connect, $query);
 $total = mysqli_num_rows($result);
 ?>
 
-<!----수정 이후(시작)----->
-
 <table class="outgbox">
 <?php
 while($rows = mysqli_fetch_assoc($result)){
