@@ -1,3 +1,4 @@
+
 <?php
 $mysqli=mysqli_connect("127.0.0.1","team10","team10","team10");
 if(mysqli_connect_errno()){
@@ -11,7 +12,8 @@ else{
     gender char(10),
     age int(11),
     num int(11) not null primary key auto_increment,
-    date datetime not null)";
+    date datetime not null),
+    image varchar(100) not null";
 
   $res=mysqli_query($mysqli,$sql);
   if($res===TRUE){
@@ -63,3 +65,4 @@ else{
   mysqli_close($mysqli);
 }
 ?>
+

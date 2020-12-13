@@ -1,7 +1,11 @@
+
+
 <!DOCTYPE html>
 <html lang="ko">
+
 <?php include 'config.php'?> <!--config.php 삽입-->
 <style>
+
 .si{
 font-family: Noto Serif Telugu;
 font-size: 20px;
@@ -66,28 +70,7 @@ color: #000000;
 .picknp{
 width: 5%;
 }
-.heart{
-width: 20px;
-height: 20px;
-background: #ea2027;
-position: relative;
-transform: rotate(45deg);
-}
-.heart::before,
-.heart::after {
-content: "";
-width: 20px;
-height: 20px;
-position: absolute;
-border-radius: 50%;
-background: #ea2027;
-}
-.heart::before {
-left: -50%;
-}
-.heart::after {
-top: -50%;
-}
+
 .rightnp{
 width: 15%;
 }
@@ -153,6 +136,35 @@ a{
 color: #000000;
 text-decoration:none
 }
+
+[id="heart"] {
+  left: -200vw;
+}
+[for="heart"] {
+  color: #aab8c2;
+  cursor: pointer;
+  font-size: 3em;
+  align-self: center;  
+  transition: color 0.2s ease-in-out;
+}
+[for="heart"]:hover {
+  color: grey;
+}
+[for="heart"]::selection {
+  color: none;
+  background: transparent;
+}
+[for="heart"]::moz-selection {
+  color: none;
+  background: transparent;
+}
+[id="heart"]:checked + label {
+  color: #e2264d;
+  will-change: font-size;
+  animation: heart 0.8s cubic-bezier(.17, .89, .5, .6);
+}
+@keyframes heart {0%, 17.5% {font-size: 0;}}
+
 </style>
 <head>
     <meta charset="utf-8">
@@ -198,26 +210,28 @@ text-decoration:none
     <option value="GS25"> GS25 </option>
     <option value="7ELEVEN"> 7ELEVEN </option>
     <option value="이마트"> 이마트 </option>
+    <option value="미니스탑"> 미니스탑 </option>
     <option value="공용"> 공용 </option>
   </select>
   <input type = submit value="검색">
 </form>
 
 <?php
-$connect = mysqli_connect("localhost","team10","team10","team10");
+
+$connect = mysqli_connect("127.0.0.1","team10","team10","team10");
 if(mysqli_connect_errno()){
       printf("Connect failed: %s\n", mysqli_connect_errno());
       exit();
 }
-else{
+else{ 
        $sql = "SELECT * FROM newproduct WHERE 1";
        $chain = isset($_POST['chain']) ? $_POST['chain'] : false;
        if($chain) $sql .= " and chain = '$chain'";
        $res=mysqli_query($connect,$sql);
         if($res){
            while ($row=mysqli_fetch_array($res)){
-            $chains=$row[1];
-            $name=$row[2];
+            $chains=$row[1]; 
+            $name=$row[2];   
             $content=$row[3];
             $price=$row[4];
             $purchase_link=$row[5];
@@ -225,6 +239,8 @@ else{
             $date=$row[7];
             $filename=$row[8];
             $type=$row[9]; ?>
+
+
 
 <table class="outnpbox" cellspacing="0" cellpadding="0">
 
@@ -243,7 +259,14 @@ else{
 <td class="leftnp" rowspan="4"></td>
 <td class="npimg" rowspan="4"><img src="<?php echo "$filename" ?>"></td>
 <td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp<?php echo "$name" ?></td>
-<td class="picknp"></br><p class="heart"></p></td>
+<td class="picknp"></br> 
+
+<form method="post" action="like.php">
+<input type="checkbox" id="heart" value='<?=$name?>' name="product" />
+<label for="heart">❤</label>
+<input type="submit" value="찜하기">
+</form>
+
 <td class="leftnp" rowspan="4"></td>
 </tr>
 
@@ -273,7 +296,7 @@ else{
 
 <?php
           }
-      }
+      }    
       else{
           printf("Could not select rows: %s\n", mysqli_error($mysqli));
       }
@@ -293,3 +316,4 @@ mysqli_close($connect);
 <footer>
 </body>
 </html>
+

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <?php include 'config.php'?> <!--config.php 삽입-->
@@ -137,4 +138,3 @@ mysqli_close($connect);
 	</p>
 <footer>
 </body>
-</html>

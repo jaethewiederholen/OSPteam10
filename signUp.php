@@ -62,6 +62,17 @@ font-size: 20px;
 padding: 1%;
 width: 90%;
 }
+
+.signup-form input[type="number"]{
+background: #F7FFF2;
+border: 0px;
+color: #504B4B;
+font-family: Noto Serif Telugu;
+font-size: 20px;
+padding: 1%;
+width: 90%;
+}
+
 .bt{
 text-align: center;
 margin-left: -7.5%;
@@ -97,48 +108,7 @@ padding: 1.95%;
 <body>
   <div class="topnav">
     <div class = "log">
-      <?php
-        if(!$userid) {
-      ?>
-      <a href="login.html" id="login">로그인</a>&nbsp/
-      <a href="signup.php" id="signup">회원가입</a>
-    <?php
-      }else {$logged=$userid;
-     ?>
-     <a href="mypage.php" id="mypage">마이페이지</a>&nbsp/
-     <a href="logout.php" id="logout">로그아웃</a>
-     <?php
-      } ?>
-    </div><div class="pd"></div>
-  </div>
-  <div class="signup-wrap">
-    <div class="signup-html">
-      회원가입<div class="pd"></div>
-    <div class="ma">
-    <div class="ba1"></div>
-    <div class="inform"><div class="pd"></div>회원정보</div>
-    <div class="pd"></div>
-    <div class="box">
-      <form name="join" method="post" action="signup_ok.php">
-      <div class="signup-form"></br>
-        <label for="user" class="label">아이디</label></br>
-        <input id="user" type="text" class="input " name="userid"></br>
-        <label for="pass" class="label">비밀번호</label></br>
-        <input id="pass" type="password" class="input" data-type="password" name="userpw"></br>
-        <label for="name" class="label">이름</label></br>
-        <input id="name" type="text" class="input" name="username"></br>
-        <label for="email" class="label">이메일</label></br>
-        <input id="email" type="text" class="input" name="useremail"></br></br>
-        <div class="bt">
-          <input type="submit" class="button" value="&nbsp&nbsp&nbsp&nbsp&nbsp가입하기&nbsp&nbsp&nbsp&nbsp&nbsp">
-        </div><div class="pd2"></div>
-      </div>
-      </form>
-    </div>
-    <div class="ba2"></div>
-    </div>
-    </div>
-  </div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="/bigdb/bootstrap/js/bootstrap.min.js"></script>
 </body>

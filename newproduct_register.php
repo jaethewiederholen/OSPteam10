@@ -1,3 +1,4 @@
+
 <!DOCTYPE>
  
 <html>
@@ -26,60 +27,26 @@
                  vertical-align: top;
                  border-bottom: 1px solid #ccc;
         }
-body{
-background: #F7FFF2;
-font-family: Noto Serif Telugu;
-font-size: 20px;
-}
-table{
-background: #F7FFF2;
-font-family: Noto Serif Telugu;
-font-size: 18px;
-}
-input[type="text"]{
-background: #F7FFF2;
-border: 0px;
-color: #504B4B;
-font-family: Noto Serif Telugu;
-font-size: 20px;
-padding: 1%;
-width: 70%;
-}
-textarea{
-background: #F7FFF2;
-border: 0px;
-color: #504B4B;
-font-family: Noto Serif Telugu;
-font-size: 20px;
-padding: 1%;
-}
-input[type="submit"]{
-padding: 1%;
-border: 0px;
-background: #B3DD7D;
-font-family: Noto Serif Telugu;
-font-size: 20px;
-color: #000000;
-}
+ 
 </style>
 
 <body>
         <form method = "post" action = "newproduct_register_action.php" enctype="multipart/form-data">
-        <table  style="padding-top:50px" align = center width=700 border=0 cellpadding=2 >
+        <table  style="padding-top:50px" align = center width=900 border=0 cellpadding=2 >
                 <tr>
-                <td height=20 align=center bgcolor=#B3DD7D><font color=white> 상품 등록</font></td>
+                <td height=20 align= center bgcolor=#ccc><font color=white> 상품 등록</font></td>
                 </tr>
                 <tr>
-                <td>
+                <td bgcolor=white>
                 <table class = "table">
                         <tr>
                         <td>상품이름</td>
-                        <td height=20><input type="text" name="name" size=20></td>
+                        <td><input type = text name = "name" size=20> </td>
                         </tr>
 
                         <tr>
                         <td>품목</td>
-                        <td><select name="type">
+                        <td><select name = "type">
                         <option value="식품">식품</option>
                         <option value="음료">음료</option>    
                         <option value="스낵">스낵</option>  
@@ -90,7 +57,7 @@ color: #000000;
 
                         <tr>
                         <td>구매점</td>
-                        <td><select name="chain">
+                        <td><select name = "chain">
                         <option value="CU">CU</option>
                         <option value="GS25">GS25</option>    
                         <option value="7ELEVEN">7ELEVEN</option>  
@@ -101,22 +68,22 @@ color: #000000;
 
                         <tr>
                         <td>가격</td>
-                        <td><input type="text" name="price" size=20></td>
+                        <td><input type = "text" name = "price" size=20></td>
                         </tr>
  
                         <tr>
                         <td>설명</td>
-                        <td><textarea name="content" cols=55 rows=5></textarea></td>
+                        <td><textarea name = "content" cols=85 rows=15></textarea></td>
                         </tr>
  
                         <tr>
                         <td>리뷰 링크</td>
-                        <td><input type="text" name="review_link" size=50 maxlength=1000></td>
+                        <td><input type = "text" name = "review_link" size=50 maxlength=1000></td>
                         </tr>
 
                         <tr>
                         <td>구매 링크</td>
-                        <td><input type="text" name="purchase_link" size=50 maxlength=1000></td>
+                        <td><input type = "text" name = "purchase_link" size=50 maxlength=1000></td>
                         </tr>
 
                         <tr>
@@ -127,11 +94,12 @@ color: #000000;
                         </table>
 
                         <center>
-                        <input type="submit" value="등록">
+                        <input type = "submit" value="등록">
                         </center>
                 </td>
                 </tr>
         </table>
         </form>
 </body>
+
 </html>

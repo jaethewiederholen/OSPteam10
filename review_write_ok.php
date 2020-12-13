@@ -20,7 +20,9 @@ VALUES ('$id', '$datetime', '$title', '$content','$star','$cvs','$item','$cost' 
 if ($conn->query($sql) === TRUE) {
   echo " <script>
   alert ('글 작성이 완료되었습니다.');
-  location.href = 'home.php';
+
+  location.href = 'review.php';
+
 </script>";}
 else {
   echo "Error: " . $sql . "<br>" . $conn->error;

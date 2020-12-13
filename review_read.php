@@ -128,7 +128,9 @@ text-decoration:none
         <?php
         if ($userid==$board['id']) {
          ?>
+
          <div class="view_btn">
+
                  <button class="view_btn1" onclick="location.href='./review_update.php?num=<?=$board['number']?>'">수정</button>
                  <button class="view_btn1" onclick="location.href='./review_delete.php?num=<?=$board['number']?>'">삭제</button>
          </div>
