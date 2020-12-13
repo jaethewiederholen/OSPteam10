@@ -144,7 +144,7 @@ text-decoration:none
   color: #aab8c2;
   cursor: pointer;
   font-size: 3em;
-  align-self: center;  
+  align-self: center;
   transition: color 0.2s ease-in-out;
 }
 [for="heart"]:hover {
@@ -218,20 +218,20 @@ text-decoration:none
 
 <?php
 
-$connect = mysqli_connect("127.0.0.1","team10","team10","team10");
+$connect = mysqli_connect("localhost","team10","team10","team10");
 if(mysqli_connect_errno()){
       printf("Connect failed: %s\n", mysqli_connect_errno());
       exit();
 }
-else{ 
+else{
        $sql = "SELECT * FROM newproduct WHERE 1";
        $chain = isset($_POST['chain']) ? $_POST['chain'] : false;
        if($chain) $sql .= " and chain = '$chain'";
        $res=mysqli_query($connect,$sql);
         if($res){
            while ($row=mysqli_fetch_array($res)){
-            $chains=$row[1]; 
-            $name=$row[2];   
+            $chains=$row[1];
+            $name=$row[2];
             $content=$row[3];
             $price=$row[4];
             $purchase_link=$row[5];
@@ -259,7 +259,7 @@ else{
 <td class="leftnp" rowspan="4"></td>
 <td class="npimg" rowspan="4"><img src="<?php echo "$filename" ?>"></td>
 <td class="npname" colspan="2">&nbsp&nbsp&nbsp&nbsp<?php echo "$name" ?></td>
-<td class="picknp"></br> 
+<td class="picknp"></br>
 
 <form method="post" action="like.php">
 <input type="checkbox" id="heart" value='<?=$name?>' name="product" />
@@ -296,7 +296,7 @@ else{
 
 <?php
           }
-      }    
+      }
       else{
           printf("Could not select rows: %s\n", mysqli_error($mysqli));
       }
@@ -316,4 +316,3 @@ mysqli_close($connect);
 <footer>
 </body>
 </html>
-

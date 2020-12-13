@@ -25,7 +25,7 @@ else{
  $query = "SELECT * FROM temp WHERE name= '$product' and session_id='$userid'";
  $res = mysqli_query($connect, $query);
  $total = mysqli_num_rows($res);
- 
+
  if($total!=1){
 
  $query2 = "INSERT INTO temp(no, session_id, name, price, content, chain)VALUES(null, '$userid','$item','$price','$content','$chain')";
@@ -47,9 +47,7 @@ else{
     alert("<?php echo "이미 장바구니에 등록되었습니다."?>");
     location.replace("<?php echo $URL?>");
     </script>
-<?php 
+<?php
  }
 }
     ?>
-
-
