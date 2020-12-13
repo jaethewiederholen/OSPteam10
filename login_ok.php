@@ -7,7 +7,7 @@ $sql = "SELECT * FROM member WHERE id='$id'";
 $result = mysqli_query($con, $sql);
 $num_match= mysqli_num_rows($result);
 
-if($num_match!=1){
+if(!$num_match){
   echo("
         <script>
           window.alert('등록되지 않은 아이디입니다.')
