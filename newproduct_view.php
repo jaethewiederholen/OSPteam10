@@ -160,7 +160,7 @@ text-decoration:none
 [id="heart"]:checked + label {
   color: #e2264d;
   will-change: font-size;
-  animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+  animation: heart 0.8s cubic-bezier(.17, .89, .5, .6);
 }
 @keyframes heart {0%, 17.5% {font-size: 0;}}
 

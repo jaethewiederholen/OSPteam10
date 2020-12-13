@@ -19,11 +19,10 @@ alert("<?php echo "장바구니에 담을 물건을 선택하세요"?>");
 location.replace("<?php echo $URL?>");
 </script>
 <?php
-mysqli_close($connect);
 exit();
 }
 else{
- $query = "SELECT * FROM temp WHERE name= '$product'";
+ $query = "SELECT * FROM temp WHERE name= '$product' and session_id='$userid'";
  $res = mysqli_query($connect, $query);
  $total = mysqli_num_rows($res);
  

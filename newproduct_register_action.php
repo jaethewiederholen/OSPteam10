@@ -20,7 +20,7 @@
 
                 $URL = './newproduct_view.php';               
  
-                $connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die("fail");
+                $connect = mysqli_connect("localhost","team10","team10","team10") or die("fail");
 
                 $query1 = "SELECT name FROM newproduct WHERE name='$name'";
                 $result1 = mysqli_query($connect, $query1);
@@ -38,7 +38,8 @@
                         alert("<?php echo "신상품이 등록되었습니다."?>");
                         location.replace("<?php echo $URL?>");
                     </script>
-<?php
+ <?php                  exit();
+
                 }
                 else{
                         echo "FAIL";

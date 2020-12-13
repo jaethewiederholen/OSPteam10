@@ -129,7 +129,7 @@ border-radius: 10px;
       환영합니다 <?php echo $_SESSION['userid'];?> 님 &nbsp/
       <a href="logOut.php" id="logout">로그아웃</a>
     <?php
-      } 
+      }
     ?>
     </p>
     <!--네비게이션-->
@@ -147,7 +147,7 @@ border-radius: 10px;
 <main class="ma">
 
 <?php
-        $connect = mysqli_connect("127.0.0.1","team10","team10","team10");
+        $connect = mysqli_connect("localhost","team10","team10","team10");
         $number = $_GET['number'];
         $query = "SELECT title, content, ingredient, date, hit, id FROM recipe WHERE number =$number;";
         $result = mysqli_query($connect, $query);
@@ -155,7 +155,7 @@ border-radius: 10px;
         $hit = "UPDATE recipe SET hit=hit+1 WHERE number=$number";
         $connect->query($hit);
 ?>
- 
+
         <table class="view_table" align=center>
         <tr>
                 <td colspan="4" class="view_title"><?php echo $rows['title']?></td>
@@ -179,7 +179,7 @@ border-radius: 10px;
                 <?php echo $rows['content']?></td>
         </tr>
         </table>
- 
+
         <!-- 목록으로 -->
         <div class="view_btn">
                 <button class="view_btn1" onclick="location.href='./recipe_board.php'">목록으로</button>

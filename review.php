@@ -13,7 +13,13 @@ include 'db_con.php';
     <script>
     $(document).ready(function(){
       var inisort="default";
-      $.post('review_sort.php', { sortby : inisort }, function(data){
+      var sort="";
+      var cvs="";
+      var item="";
+      var cost="";
+      var text="";
+      $.post('review_sort.php', { sortby : inisort, cvs : cvs, item : item, cost : cost }, function(data){
+        //alert(data);
         data=JSON.parse(data);
         document.getElementById('list_table').innerHTML='<tr><th style="background-color : #eeeeee; text-align:center;">번호</th><th style="background-color : #eeeeee; text-align:center;">제목</th><th style="background-color : #eeeeee; text-align:center;">별점</th><th style="background-color : #eeeeee; text-align:center;">작성자</th><th style="background-color : #eeeeee; text-align:center;">작성일</th></tr>';
         //alert("ajax completed: " + data);
@@ -28,8 +34,8 @@ include 'db_con.php';
 
       });
       $('#sortby').change(function(){
-        var sort = $(this).val();
-        $.post('review_sort.php', { sortby : sort }, function(data){
+        sort = $(this).val();
+        $.post('review_search.php', { sortby : sort, cvs : cvs, item : item, cost : cost, text : text }, function(data){
           data=JSON.parse(data);
           document.getElementById('list_table').innerHTML='<tr><th style="background-color : #eeeeee; text-align:center;">번호</th><th style="background-color : #eeeeee; text-align:center;">제목</th><th style="background-color : #eeeeee; text-align:center;">별점</th><th style="background-color : #eeeeee; text-align:center;">작성자</th><th style="background-color : #eeeeee; text-align:center;">작성일</th></tr>';
           //alert("ajax completed: " + data);
@@ -45,6 +51,98 @@ include 'db_con.php';
         });
 
       });
+      $('#cvs_select').change(function() {
+        cvs = $(this).val();
+        $.post('review_search.php', { sortby : sort, cvs : cvs, item : item, cost : cost, text : text }, function(data){
+          data=JSON.parse(data);
+          if(data=="") {
+              document.getElementById('list_table').innerHTML='해당하는 검색결과가 없습니다!';
+          }
+          else {
+          document.getElementById('list_table').innerHTML='<tr><th style="background-color : #eeeeee; text-align:center;">번호</th><th style="background-color : #eeeeee; text-align:center;">제목</th><th style="background-color : #eeeeee; text-align:center;">별점</th><th style="background-color : #eeeeee; text-align:center;">작성자</th><th style="background-color : #eeeeee; text-align:center;">작성일</th></tr>';
+          //alert("ajax completed: " + data);
+          $.each(data,function(key,val){
+            //alert(val.num);
+          $('#list_table').append('<tbody><tr><td width="100">'+ val.num + '</td><td width="470" ><span class="read_check" style="cursor:pointer" data-action="./review_read.php?num='+val.num+'">'+val.title+'</span></td><td width="120">'+val.star+'</td><td width="120">' + val.id + '</td><td width="100">' + val.date + '</td></tr></tbody>');
+            $(".read_check").on("click", function () {
+              var action_url = $(this).attr("data-action");
+              $(location).attr("href",action_url);
+              });
+            });
+          }
+
+        });
+
+      });
+      $('#item_select').change(function() {
+        item = $(this).val();
+        $.post('review_search.php', { sortby : sort, cvs : cvs, item : item, cost : cost, text : text }, function(data){
+          data=JSON.parse(data);
+          if(data=="") {
+              document.getElementById('list_table').innerHTML='해당하는 검색결과가 없습니다!';
+          }
+          else {
+          document.getElementById('list_table').innerHTML='<tr><th style="background-color : #eeeeee; text-align:center;">번호</th><th style="background-color : #eeeeee; text-align:center;">제목</th><th style="background-color : #eeeeee; text-align:center;">별점</th><th style="background-color : #eeeeee; text-align:center;">작성자</th><th style="background-color : #eeeeee; text-align:center;">작성일</th></tr>';
+          //alert("ajax completed: " + data);
+          $.each(data,function(key,val){
+            //alert(val.num);
+          $('#list_table').append('<tbody><tr><td width="100">'+ val.num + '</td><td width="470" ><span class="read_check" style="cursor:pointer" data-action="./review_read.php?num='+val.num+'">'+val.title+'</span></td><td width="120">'+val.star+'</td><td width="120">' + val.id + '</td><td width="100">' + val.date + '</td></tr></tbody>');
+            $(".read_check").on("click", function () {
+              var action_url = $(this).attr("data-action");
+              $(location).attr("href",action_url);
+              });
+            });
+          }
+
+        });
+      });
+      $('#cost_select').change(function() {
+        cost = $(this).val();
+        $.post('review_search.php', { sortby : sort, cvs : cvs, item : item, cost : cost, text: text }, function(data){
+          data=JSON.parse(data);
+          if(data=="") {
+              document.getElementById('list_table').innerHTML='해당하는 검색결과가 없습니다!';
+          }
+          else {
+          document.getElementById('list_table').innerHTML='<tr><th style="background-color : #eeeeee; text-align:center;">번호</th><th style="background-color : #eeeeee; text-align:center;">제목</th><th style="background-color : #eeeeee; text-align:center;">별점</th><th style="background-color : #eeeeee; text-align:center;">작성자</th><th style="background-color : #eeeeee; text-align:center;">작성일</th></tr>';
+          //alert("ajax completed: " + data);
+          $.each(data,function(key,val){
+            //alert(val.num);
+          $('#list_table').append('<tbody><tr><td width="100">'+ val.num + '</td><td width="470" ><span class="read_check" style="cursor:pointer" data-action="./review_read.php?num='+val.num+'">'+val.title+'</span></td><td width="120">'+val.star+'</td><td width="120">' + val.id + '</td><td width="100">' + val.date + '</td></tr></tbody>');
+            $(".read_check").on("click", function () {
+              var action_url = $(this).attr("data-action");
+              $(location).attr("href",action_url);
+              });
+            });
+          }
+
+        });
+      });
+
+      $('#search_btn').click(function() {
+        text=$('#search_text').val();
+        $.post('review_search.php', { sortby : sort, cvs : cvs, item : item, cost : cost, text: text }, function(data){
+          //alert(data);
+          data=JSON.parse(data);
+          if(data=="") {
+              document.getElementById('list_table').innerHTML='해당하는 검색결과가 없습니다!';
+          }
+          else {
+          document.getElementById('list_table').innerHTML='<tr><th style="background-color : #eeeeee; text-align:center;">번호</th><th style="background-color : #eeeeee; text-align:center;">제목</th><th style="background-color : #eeeeee; text-align:center;">별점</th><th style="background-color : #eeeeee; text-align:center;">작성자</th><th style="background-color : #eeeeee; text-align:center;">작성일</th></tr>';
+          //alert("ajax completed: " + data);
+          $.each(data,function(key,val){
+            //alert(val.num);
+          $('#list_table').append('<tbody><tr><td width="100">'+ val.num + '</td><td width="470" ><span class="read_check" style="cursor:pointer" data-action="./review_read.php?num='+val.num+'">'+val.title+'</span></td><td width="120">'+val.star+'</td><td width="120">' + val.id + '</td><td width="100">' + val.date + '</td></tr></tbody>');
+            $(".read_check").on("click", function () {
+              var action_url = $(this).attr("data-action");
+              $(location).attr("href",action_url);
+              });
+            });
+          }
+
+        });
+      });
+
     });
 
     </script>
@@ -146,8 +244,8 @@ text-decoration:none
   <div class="search">
     <div class="select">
 
-    <select class="se">
-      <option selected="">편의점</option>
+    <select class="se" id="cvs_select" >
+      <option value="">모든 편의점</option>
       <option value="GS25">GS25</option>
       <option value="CU">CU</option>
       <option value="세븐일레븐">세븐일레븐</option>
@@ -155,24 +253,27 @@ text-decoration:none
       <option value="미니스톱">미니스톱</option>
     </select>
 
-    <select class="se">
-      <option selected="">품목</option>
+    <select class="se" id="item_select">
+      <option value="">모든 품목</option>
       <option value="식품">식품</option>
       <option value="음료">음료</option>
       <option value="스낵">스낵</option>
-      <option value="술">술</option>
+      <option value="아이스크림">아이스크림</option>
       <option value="생활용품">생활용품</option>
     </select>
 
-    <select class="se">
-      <option selected="">가격대</option>
+    <select class="se" id="cost_select">
+      <option value="">모든 가격대</option>
       <option value="5천원대 이하">5천원대 이하</option>
       <option value="1만원대 이하">1만원대 이하</option>
       <option value="2만원대 이하">2만원대 이하</option>
     </select>
 
     </div>
-    <input type="text" class="searchform" placeholder="제목 또는 상품평 검색하기" id="inputDefault">
+    <div>
+    <input type="text" id="search_text" placeholder="제목 또는 상품명 검색하기" id="search">
+    <input type = "button" id="search_btn"  value="검색">
+  </div>
   </div>
 
   <div class="contatiner">
