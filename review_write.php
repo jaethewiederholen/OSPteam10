@@ -51,12 +51,188 @@ font-size: 23px;
 margin-bottom: -0.5%;
 margin-top: -0.5%;
 }
+
+.select-group{
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Reset Select */
+.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #ffffff;
+  background-image: none;
+}
+/* Remove IE arrow */
+.form-control::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+.select {
+	border: 1px solid #ecbbb4;
+  position: relative;
+  display: flex;
+  width: 12em;
+  height: 40px;
+  line-height: 3;
+  background: #ffffff;
+  overflow: hidden;
+  border-radius: .25em;
+}
+.form-control {
+  flex: 1;
+	height: 3em;
+  padding: 0 1em;
+  color: #000000;
+	font-size : 15px;
+  cursor: pointer;
+}
+/* Arrow */
+.select::after {
+  color: #ffffff;
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #ffffff;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  color: #ecbbb4;
+}
+
 a{
 color: #000000;
 text-decoration:none
 }
+table{
+	background-color: #ecbbb4;
+	border-radius:10px;
+	text-algin: center;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+th{
+	padding: 20px 15px;
+	color:#4E5066;
+  font-size:20px;
+  font-weight: bold;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+	background-color: rgba(255,255,255,0.1);
+	text-align:center;
+}
+
+tr {
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+	background-color: rgba(255,255,255,0.7);
+}
+
+tr:nth-child(odd) td {
+  background-color: rgba(255,255,255,0.4);
+}
+
+td {
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+}
+:root {
+  --backgroundColor: #F7FFF2;
+  --colorShadeA: #da7a6c;
+  --colorShadeB: #df8d81;
+  --colorShadeC: #e9b1a9;
+  --colorShadeD: #eec4be;
+  --colorShadeE: #f4d6d2;
+}
+* {
+  box-sizing: border-box;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
 
 
+.big-button {
+	position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+	vertical-align: middle;
+	font-size: 20px;
+	font-weight: bold;
+	color:var(--colorShadeA);
+  padding: 1em 2em;
+  border: 2px solid var(--colorShadeA);
+  border-radius: 1em;
+  background: var(--colorShadeE);
+	transform-style: preserve-3d;
+   transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+.big-button::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--colorShadeC);
+  border-radius: inherit;
+    box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
+ transform: translate3d(0, 0.75em, -1em);
+     transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+
+.big-button:hover {
+  background: var(--colorShadeD);
+  transform: translate(0, 0.375em);
+}
+
+.big-button:hover::before {
+  transform: translate3d(0, 0.75em, -1em);
+}
+
+.big-button:active {
+            transform: translate(0em, 0.75em);
+}
+
+.big-button:active::before {
+  transform: translate3d(0, 0, -1em);
+      box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
+}
+.submit-area{
+	width: 90%;
+  margin: 10px auto;
+	padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
 
 
@@ -95,10 +271,10 @@ text-decoration:none
   <div class= "container">
     <div class="board_wirte" id="board_write">
       <form action="review_write_ok.php" method="post" enctype="multipart/form-data">
-        <table class="table table-striped" style="text-algin: center; border: 1px solid #ddddda">
+				<br><table>
           <thead>
             <tr>
-              <th colspan="2" style="background-color: #eeeeee; text-align:center;"><h3>솔직 리뷰 쓰기</h3></th>
+              <th colspan="2"><h3>솔직 리뷰 쓰기</h3></th>
             </tr>
           </thead>
           <tbody>
@@ -106,7 +282,10 @@ text-decoration:none
               <td><span class="pull-left">&nbsp;&nbsp;&nbsp;작성자 : <b><?=$userid?></b></span></td>
             </tr>
             <tr>
-              <td><select class="se" name="cvs" id="cvs">
+              <td>
+							<div class="select-group">
+							<div class="select">
+							<select class="form-control" name="cvs" id="cvs">
                 <option value="">편의점</option>
                 <option value="GS25">GS25</option>
                 <option value="CU">CU</option>
@@ -114,32 +293,36 @@ text-decoration:none
                 <option value="이마트">이마트</option>
                 <option value="미니스톱">미니스톱</option>
               </select>
-
-              <select class="se" name="item" id="item">
+							</div>
+							<div class="select" style="margin-left: 5%;">
+              <select class="form-control" name="item" id="item">
                 <option value="">품목</option>
                 <option value="식품">식품</option>
                 <option value="음료">음료</option>
                 <option value="스낵">스낵</option>
-                <option value="술">술</option>
+                <option value="아이스크림">아이스크림</option>
                 <option value="생활용품">생활용품</option>
               </select>
-
-              <select class="se" name="cost" id="cost">
+							</div>
+							<div class="select" style="margin-left: 5%;">
+              <select class="form-control" name="cost" id="cost">
                 <option value="">가격대</option>
                 <option value="5천원대 이하">5천원대 이하</option>
                 <option value="1만원대 이하">1만원대 이하</option>
                 <option value="2만원대 이하">2만원대 이하</option>
               </select>
-
-             <select class="se" name="star" id="star">
-              <option value=""> 별점을 남겨주세요</option>
-              <option value=1>1점</option>
-              <option value=2>2점</option>
-              <option value=3>3점</option>
-              <option value=4>4점</option>
-              <option value=5>5점</option>
-            </select>
-           </td>
+							</div>
+							<div class="select" style="margin-left: 5%;">
+             	<select class="form-control" name="star" id="star">
+	              <option value=""> 별점</option>
+	              <option value=1>1점</option>
+	              <option value=2>2점</option>
+	              <option value=3>3점</option>
+	              <option value=4>4점</option>
+	              <option value=5>5점</option>
+	            </select>
+							</div>
+           	</td>
             </tr>
             <tr>
               <td><input type="text" class="form-control" placeholder="글 제목" name="title" id="title" required></td>
@@ -152,7 +335,8 @@ text-decoration:none
             </tr>
           </tbody>
         </table>
-        <button type="submit" class="btn btn-primary">저장</button>
+        <!--<button type="submit" class="btn btn-primary">저장</button>-->
+				<div class="submit-area"><button type="submit" class="big-button">저장</button></div>
       </form>
     </div>
   </div>
