@@ -3,7 +3,7 @@
  if(isset($_SESSION["userid"])) {
     $userid=$_SESSION["userid"];
   }
- $connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die ("connect fail");
+ $connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
  $product = $_POST['product'];
  $URL = './newproduct_view.php';
  $query = "SELECT * from newproduct where name = '$product' ";
