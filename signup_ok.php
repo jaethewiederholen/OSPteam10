@@ -10,7 +10,15 @@
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
-
+  $sql = "SELECT * from member WHERE id ='$userid'";
+  $result = mysqli_query($conn, $sql);
+  $exist = mysqli_num_rows($result);
+  if($exist>0){
+    echo "<script> alert('이미 등록된 아이디입니다.'); </script>";
+    echo "<script> window.history.back(); </script>";
+    exit();
+  }
+  else{
   $sql = "INSERT INTO member(id, pw, gender, age, date) VALUES ('$userid', '$userpw', '$gender', '$age', '$date')";
 
   if ($conn->query($sql) === TRUE) {
@@ -22,4 +30,5 @@
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
   $conn->close();
+}
   ?>
