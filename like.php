@@ -3,7 +3,7 @@
  if(isset($_SESSION["userid"])) {
     $userid=$_SESSION["userid"];
   }
- $connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die ("connect fail");
+ $connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
  $product = $_POST['product'];
  $URL = './newproduct_view.php';
  $query = "SELECT * from newproduct where name = '$product' ";
@@ -25,7 +25,7 @@ else{
  $query = "SELECT * FROM temp WHERE name= '$product' and session_id='$userid'";
  $res = mysqli_query($connect, $query);
  $total = mysqli_num_rows($res);
- 
+
  if($total!=1){
 
  $query2 = "INSERT INTO temp(no, session_id, name, price, content, chain)VALUES(null, '$userid','$item','$price','$content','$chain')";
@@ -47,9 +47,7 @@ else{
     alert("<?php echo "이미 장바구니에 등록되었습니다."?>");
     location.replace("<?php echo $URL?>");
     </script>
-<?php 
+<?php
  }
 }
     ?>
-
-

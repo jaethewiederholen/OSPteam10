@@ -5,7 +5,7 @@
   $age = $_POST['age'];
   $date = date('Y-m-d H:i:s');
 
-  $conn = new mysqli("127.0.0.1","team10","team10","team10");
+  $conn = new mysqli("localhost","team10","team10","team10");
   // Check connection
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
