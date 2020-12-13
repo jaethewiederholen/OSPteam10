@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html lang="ko">
 <?php include 'config.php'?> <!--config.php 삽입-->
@@ -156,3 +157,4 @@ text-decoration:none
 
 </body>
 </html>
+

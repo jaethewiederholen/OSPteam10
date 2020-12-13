@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html lang="ko">
 <?php include 'config.php'?> <!--config.php 삽입-->
@@ -170,3 +171,4 @@ border-bottom: 1px solid #ccc;
 </footer>
 </body>
 </html>
+

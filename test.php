@@ -1,3 +1,4 @@
+
 <?php include 'config.php'?> <!--config.php 삽입-->
 <?php
 header("Content-Type: text/html; charset=UTF-8");
@@ -79,3 +80,4 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
+

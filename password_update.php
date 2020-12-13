@@ -1,3 +1,4 @@
+
 <?php include 'config2.php'?>
 <?php
 $connect = mysqli_connect("127.0.0.1","team10","team10","team10") or die ("connect fail");
@@ -21,4 +22,5 @@ location.href='login.php';
 </script>
 <?php }
 }
+
 ?>

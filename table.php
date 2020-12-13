@@ -1,3 +1,4 @@
+
 <?php
 $mysqli=mysqli_connect("127.0.0.1","team10","team10","team10");
 if(mysqli_connect_errno()){
@@ -64,3 +65,4 @@ else{
   mysqli_close($mysqli);
 }
 ?>
+

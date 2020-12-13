@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html lang="ko">
 <?php include 'config.php'?> <!--config.php 삽입-->
@@ -186,4 +187,5 @@ border-radius: 10px;
                 <button class="view_btn1" onclick="location.href='./recipe_delete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">삭제</button>
         </div>
 </body>
+
 </html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html lang="ko">
 <?php include 'config2.php'?> <!--config.php 삽입-->
