@@ -1,7 +1,5 @@
 <!DOCTYPE HTML>
-
 <?php include 'config.php'?> <!--config.php 삽입-->
-
 <html>
 <head>
 <meta charset="utf-8">
@@ -104,12 +102,11 @@ padding: 0.6%;
 </head>
 
 <body>
-
+  
   <div class="log">
     <?php
         if(!$userid) {
       ?>
-
       <a href="login.php" id="login">로그인</a>&nbsp/
       <a href="signUp.php" id="signup">회원가입</a>
     <?php
@@ -160,7 +157,6 @@ padding: 0.6%;
   </div>
   </div>
   
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="/bigdb/bootstrap/js/bootstrap.min.js"></script>
 </body>
