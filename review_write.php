@@ -270,7 +270,7 @@ td {
 <main class="ma">
   <div class= "container">
     <div class="board_wirte" id="board_write">
-      <form action="review_write_ok.php" method="post" enctype="multipart/form-data">
+      <form enctype="multipart/form-data" action="review_write_ok.php" method="post" enctype="multipart/form-data">
 				<br><table>
           <thead>
             <tr>
@@ -331,6 +331,7 @@ td {
               <td><textarea class="form-control" placeholder="글 내용" name="content" id="content" style="height:350px" required></textarea></td>
             </tr>
             <tr>
+							<input type="hidden" name="MAX_FILE_SIZE" value="300000" />
               <td>이미지 업로드 하기 : <input type="file" name="img" id="imageFileOpenInput" accept="image/*"></td>
             </tr>
           </tbody>
