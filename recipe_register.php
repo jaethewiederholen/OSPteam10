@@ -323,16 +323,16 @@ td {
               <td colspan="2"><span class="pull-left">&nbsp;&nbsp;&nbsp;작성자 : <b><input type = "hidden" name = "name" value="<?=$_SESSION['userid']?>"><?=$_SESSION['userid']?></b></span></td>
             </tr>
             <tr>
-              <td colspan="2"><input type="text" class="form-control1" placeholder="글 제목" name="title" id="title" required></td>
+              <td colspan="2"><input type="text" style="width: 850px;" class="form-control1" placeholder="글 제목" name="title" id="title" required></td>
             </tr>
             <tr>
-             <td colspan="2"><input type ="text" placeholder="재료" name = "ingredient"></td>
+             <td colspan="2"><input type ="text" style="width: 850px;" placeholder="재료" name = "ingredient"></td>
             </tr> 
             <tr>
               <td colspan="2"><textarea class="form-control2" placeholder="글 내용" name="content" id="content" style="font-size : 15px; font-family: Noto Serif Telugu; padding: 13px; height:350px; width:850px;" required></textarea></td>
             </tr>
             <tr>
-             <td colspan="2"><input type="password" placeholder="비밀번호" name = "pw" maxlength=10></td>
+             <td colspan="2"><input type="password" style="width: 850px;" placeholder="비밀번호" name = "pw" maxlength=10></td>
             </tr>
           </tbody>
         </table>
