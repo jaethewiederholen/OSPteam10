@@ -180,6 +180,9 @@ td{
             <tr>
             <td colspan="12" style="height : 300px; text-align:left; vertical-align: top;"><?=$board['content']?></td>
             </tr>
+						<tr>
+						<td colspan="12" style="height : 300px; text-align:left; vertical-align: top;"><img src = "<?=$board['image']?>"></td>
+						</tr>
           </tbody>
         </table>
         <br><button class="view_btn1" onclick="location.href='./review.php'">목록</button>

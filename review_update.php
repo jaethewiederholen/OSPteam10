@@ -341,6 +341,7 @@ td {
               <td><textarea class="form-control" name="content" id="content" style="height:350px" required> <?= $board['content'];?> </textarea></td>
             </tr>
             <tr>
+              <input type="hidden" name="MAX_FILE_SIZE" value="300000" />
               <td>이미지 업로드 하기 : <input type="file" name="img" id="imageFileOpenInput" accept="image/*"></td>
             </tr>
           </tbody>
