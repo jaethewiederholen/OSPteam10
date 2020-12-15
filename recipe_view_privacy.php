@@ -238,8 +238,9 @@ td{
         $rows = mysqli_fetch_assoc($result);
         $hit = "UPDATE recipe SET hit=hit+1 WHERE number=$number";
         $connect->query($hit);
+
 ?>
- 
+
   <div class= "container">
     <div class="board_read" id="board_read">
         <br><table>
@@ -258,6 +259,10 @@ td{
             </tr>
             <tr>
             <td colspan="12" style="height:300px; text-align:left; vertical-align:top;"><?php echo $rows['content']?></td>
+            </tr>
+            <tr>
+            <td colspan="12" style="height:300px; text-align:left; vertical-align:top;">
+             <img src="<?php echo $rows['file']?>"></td>
             </tr>
           </tbody>
         </table>
