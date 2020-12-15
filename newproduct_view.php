@@ -5,6 +5,25 @@
 
 <?php include 'config.php'?> <!--config.php 삽입-->
 <style>
+.btn-brackets {
+	display: block;
+	position: relative;
+	width: 80px;
+	padding: 0.6em;
+font-family: Noto Serif Telugu;
+font-size: 15px;
+	text-align: center;
+	text-decoration: none;
+	color: #B3E495;
+	background: #fff;
+	border:1px solid #B3E495;
+}
+.btn-brackets:hover {
+	 background: #B3E495;
+         color: #fff;
+	 cursor: pointer;
+	 text-decoration: none;
+}
 .select{
 width: 90%;
 margin: 10px auto;
@@ -345,7 +364,7 @@ text-decoration:none
 [for="heart"] {
   color: #aab8c2;
   cursor: pointer;
-  font-size: 3em;
+  font-size: 1.5em;
   align-self: center;
   transition: color 0.2s ease-in-out;
 }
@@ -366,7 +385,6 @@ text-decoration:none
   animation: heart 0.8s cubic-bezier(.17, .89, .5, .6);
 }
 @keyframes heart {0%, 17.5% {font-size: 0;}}
-
 </style>
 <head>
     <meta charset="utf-8">
@@ -467,9 +485,9 @@ else{
 <td class="picknp"></br>
 
 <form method="post" action="like.php">
-<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="visibility:hidden;" />
+<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="zoom:1.5;"/>
 <label for="heart">❤</label>
-<input type="submit" value="찜하기" style="visibility:hidden;">
+<button type="submit" class="btn-brackets">찜하기</button>
 </form>
 
 <td class="leftnp" rowspan="4"></td>
@@ -530,9 +548,9 @@ else{
 <td class="picknp"></br>
 
 <form method="post" action="like.php">
-<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="visibility:hidden;" />
+<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="zoom:1.5;"/>
 <label for="heart">❤</label>
-<input type="submit" value="찜하기" style="visibility:hidden;">
+<button type="submit" class="btn-brackets">찜하기</button>
 </form>
 
 <td class="leftnp" rowspan="4"></td>
@@ -594,9 +612,9 @@ else{
 <td class="picknp"></br>
 
 <form method="post" action="like.php">
-<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="visibility:hidden;" />
+<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="zoom:1.5;"/>
 <label for="heart">❤</label>
-<input type="submit" value="찜하기" style="visibility:hidden;">
+<button type="submit" class="btn-brackets">찜하기</button>
 </form>
 
 <td class="leftnp" rowspan="4"></td>
@@ -658,9 +676,9 @@ else{
 <td class="picknp"></br>
 
 <form method="post" action="like.php">
-<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="visibility:hidden;" />
+<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="zoom:1.5;"/>
 <label for="heart">❤</label>
-<input type="submit" value="찜하기" style="visibility:hidden;">
+<button type="submit" class="btn-brackets">찜하기</button>
 </form>
 
 <td class="leftnp" rowspan="4"></td>
@@ -722,9 +740,9 @@ else{
 <td class="picknp"></br>
 
 <form method="post" action="like.php">
-<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="visibility:hidden;" />
+<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="zoom:1.5;"/>
 <label for="heart">❤</label>
-<input type="submit" value="찜하기" style="visibility:hidden;">
+<button type="submit" class="btn-brackets">찜하기</button>
 </form>
 
 <td class="leftnp" rowspan="4"></td>
