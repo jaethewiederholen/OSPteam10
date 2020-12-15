@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html lang="ko">
 <?php include 'config.php'?> <!--config.php 삽입-->
@@ -106,6 +105,7 @@ border:none;
   color: #000000;
 	font-size : 15px;
   cursor: pointer;
+border:none;
 }
 input[type="text"] {
   flex: 1;
@@ -284,7 +284,7 @@ td {
       환영합니다 <?php echo $_SESSION['userid'];?> 님 &nbsp/
       <a href="logOut.php" id="logout">로그아웃</a>
     <?php
-      } 
+      }
     ?>
     </p>
     <!--네비게이션-->
@@ -315,7 +315,7 @@ td {
         <!--글작성-->
   <div class= "container">
     <div class="board_wirte" id="board_write">
-<form method = "post" action = "recipe_register_action.php">
+<form method = "post" action = "recipe_register_action.php" enctype="multipart/form-data">
 				<br><table style="border-collapse: collapse;">
           <thead>
             <tr>
@@ -331,13 +331,15 @@ td {
             </tr>
             <tr>
              <td colspan="2"><input type ="text" style="width: 850px;" placeholder="재료" name = "ingredient"></td>
-            </tr> 
+            </tr>
             <tr>
               <td colspan="2"><textarea class="form-control2" placeholder="글 내용" name="content" id="content" style="font-size : 15px; font-family: Noto Serif Telugu; padding: 13px; height:350px; width:850px;" required></textarea></td>
             </tr>
             <tr>
-             <td colspan="2"><input type="password" style="width: 850px;" placeholder="비밀번호" name = "pw" maxlength=10></td>
+							<input type="hidden" name="MAX_FILE_SIZE" value="300000" />
+              <td><input type="file" name="img" id="imageFileOpenInput" accept="image/*"></td>
             </tr>
+
           </tbody>
         </table>
         <!--<button type="submit" class="btn btn-primary">저장</button>-->
@@ -353,4 +355,3 @@ td {
 </footer>
 </body>
 </html>
-

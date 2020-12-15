@@ -1,6 +1,9 @@
 <!DOCTYPE HTML>
 <html lang="ko">
-<?php include 'config.php'?> <!--config.php 삽입-->
+<?php
+include 'config.php';
+include 'login_check.php';
+include 'db_con.php';?> <!--config.php 삽입-->
 <style>
 .si{
 font-family: Noto Serif Telugu;
@@ -147,37 +150,38 @@ border-radius: 10px;
 <main class="ma">
 
 <?php
-        $connect = mysqli_connect("localhost","team10","team10","team10");
-        $number = $_GET['number'];
-        $query = "SELECT title, content, ingredient, date, hit, id FROM recipe WHERE number =$number;";
-        $result = mysqli_query($connect, $query);
-        $rows = mysqli_fetch_assoc($result);
-        $hit = "UPDATE recipe SET hit=hit+1 WHERE number=$number";
-        $connect->query($hit);
+$bno = $_GET['number'];
+$sql = mq("select * from recipe where number='".$bno."'
+");
+$board=$sql->fetch_array();
+
 ?>
 
         <table class="view_table" align=center>
         <tr>
-                <td colspan="4" class="view_title"><?php echo $rows['title']?></td>
+                <td colspan="4" class="view_title"><?=$board['title']?></td>
         </tr>
         <tr>
                 <td class="view_id">작성자</td>
-                <td class="view_id2"><?php echo $rows['id']?></td>
+                <td class="view_id2"><?=$board['id']?></td>
 
                 <td class="view_hit">조회수</td>
-                <td class="view_hit2"><?php echo $rows['hit']?></td>
+                <td class="view_hit2"><?=$board['hit']?></td>
 
         </tr>
 
         <tr>
         <td class="view_ingredient">재료</td>
-        <td class="view_ingredient2"><?php echo $rows['ingredient']?></td>
+        <td class="view_ingredient2"><?=$board['ingredient']?></td>
         </tr>
 
         <tr>
                 <td colspan="4" class="view_content" valign="top">
-                <?php echo $rows['content']?></td>
+                <?=$board['content']?></td>
         </tr>
+				<tr>
+				<td colspan="12" style="height : 300px; text-align:left; vertical-align: top;"><img src = "<?=$board['file']?>"></td>
+				</tr>
         </table>
 
         <!-- 목록으로 -->
