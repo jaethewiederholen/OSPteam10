@@ -409,7 +409,7 @@ text-decoration:none
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
 <div class="select-group"><div class="select">
   <select name="chain" class="form-control" id="cvs_select">
-    <option value="0"> 전체 </option>
+    <option value="0"> select </option>
     <option value="CU"> CU </option>
     <option value="GS25"> GS25 </option>
     <option value="7ELEVEN"> 7ELEVEN </option>
