@@ -251,17 +251,18 @@ $board=$sql->fetch_array();
           <tbody class="tbl-content">
             <tr>
               <td style="width:10%">작성자</td><td colspan="3" style="width:20%"><?=$board['id']?></td>
-              <td style="width:10%">조회수</td> <td colspan="3" style="width:20%"><?=$board['ingredient']?></td>
+              <td style="width:10%">조회수</td> <td colspan="3" style="width:20%"><?=$board['hit']?></td>
             </tr>
             <tr>
-              <td style="width:10%">재료</td> <td colspan="7" style="width:20%"><?php echo $rows['ingredient']?></td>
+              <td style="width:10%">재료</td> <td colspan="7" style="width:20%"><?=$board['ingredient']?></td>
             </tr>
             <tr>
-            <td colspan="12" style="height:300px; text-align:left; vertical-align:top;"> <?=$board['content']?></td>
+            <td colspan="12" style="height:300px; text-align:left; vertical-align:top;"><?=$board['content']?></td>
             </tr>
             <tr>
-				  <td colspan="12" style="height : 300px; text-align:left; vertical-align: top;"><img src = "<?=$board['file']?>"></td>
-				  </tr>
+            <td colspan="12" style="height:300px; text-align:left; vertical-align:top;">
+             <img src="<?=$board['file']?>"></td>
+            </tr>
           </tbody>
         </table>
         <!-- 목록으로 -->
