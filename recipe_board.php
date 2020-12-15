@@ -8,6 +8,148 @@
 	<title>PyeonReview_꿀조합레시피</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<style>
+.tb
+{
+    display: table;
+    width: 100%;
+}
+
+.td
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.search-text, .search-btn
+{
+    color: #fff;
+    font-family: Nunito;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+#cover
+{
+    margin: 10px auto;
+    display: flex;
+    width: 450px;
+    padding: 35px;
+
+    background-color: #B3E495;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px #B3E495, 0 0 0 20px #ffffffeb;
+    transform: scale(0.6);
+}
+
+.search-text[type="text"]
+{
+    width: 100%;
+    height: 40px;
+    font-size: 30px;
+    line-height: 1;
+}
+
+.search-text[type="text"]::placeholder
+{
+    color: #ffffff;
+}
+
+#s-cover
+{
+    width: 1px;
+    padding-left: 35px;
+}
+
+.search-btn
+{
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+#s-circle
+{
+    position: relative;
+    top: -8px;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    margin-top: 0;
+    border-width: 15px;
+    border: 15px solid #fff;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: 0.5s ease all;
+}
+
+.search-btn span
+{
+    position: absolute;
+    top: 38px;
+    left: 23px;
+    display: block;
+    width: 45px;
+    height: 15px;
+    background-color: transparent;
+    border-radius: 10px;
+    transform: rotateZ(52deg);
+    transition: 0.5s ease all;
+}
+
+.search-btn span:before, button span:after
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 45px;
+    height: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    transform: rotateZ(0);
+    transition: 0.5s ease all;
+}
+
+#s-cover:hover #s-circle
+{
+    top: -1px;
+    width: 50px;
+    height: 15px;
+    border-width: 0;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+#s-cover:hover span
+{
+    top: 50%;
+    left: 40px;
+    width: 25px;
+    margin-top: -9px;
+    transform: rotateZ(0);
+}
+
+#s-cover:hover button span:before
+{
+    bottom: 11px;
+    transform: rotateZ(52deg);
+}
+
+#s-cover:hover button span:after
+{
+    bottom: -11px;
+    transform: rotateZ(-52deg);
+}
+#s-cover:hover button span:before, #s-cover:hover button span:after
+{
+    right: -6px;
+    width: 40px;
+    background-color: #fff;
+}
 	body{
 		padding-top: 7.2px;
 		padding-left: 8px;
@@ -186,12 +328,20 @@
 <main class="ma">
 <div class="tinyba"></div>
 
-<div>
-<input type="text" id="search_text" placeholder="레시피 제목 검색하기" id="search">
-<input type = "button" id="search_btn"  value="검색">
-</div>
+    <div id="cover">
+      <div class="tb">
+        <div class="td"><input class="search-text" type="text" id="search_text" placeholder="레시피 제목 검색하기" id="search"></div>
+        <div class="td" id="s-cover">
+          <button  class="search-btn" type="icon" id="search_btn">
+            <div id="s-circle"></div>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-</br></br>
+</br>
 <div class="box">
 	<div class="container">
 		<div class="row" id="here">
@@ -199,9 +349,11 @@
 		</div>
 	</div>
 </div>
+</br>
 <div class text align="center">
 <button type="button" class="recipe_Btn" onClick="location.href='./recipe_register.php'">레시피 작성하기</button>
 </div>
+</br>
 <footer>
 	<p class="ba2"></p>
 </main>
