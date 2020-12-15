@@ -74,12 +74,19 @@
 	color: #000000;
 	}
 	.recipe_Btn{
-	padding: 1%;
-	border: 0px;
-	background: #B3DD7D;
-	font-family: Noto Serif Telugu;
-	font-size: 23px;
-	color: #000000;
+    font-family: Noto Serif Telugu;
+    border-radius:10px;
+    border: 4px solid #4E5066;
+    background-color: #ecbbb4;
+    color: #4E5066;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+    margin: auto;
+    padding: 12px 32px 12px 32px;
+    position: relative;
+    text-decoration: none;
 	}
 	.ba2{
 	border: 3px solid #444742;
@@ -184,6 +191,7 @@
 <input type = "button" id="search_btn"  value="검색">
 </div>
 
+</br></br>
 <div class="box">
 	<div class="container">
 		<div class="row" id="here">
@@ -191,10 +199,8 @@
 		</div>
 	</div>
 </div>
-
-
 <div class text align="center">
-</br><button type="button" class="recipe_Btn" onClick="location.href='./recipe_register.php'">&nbsp;&nbsp;글쓰기&nbsp;&nbsp;</br></button></br></br>
+<button type="button" class="recipe_Btn" onClick="location.href='./recipe_register.php'">레시피 작성하기</button>
 </div>
 <footer>
 	<p class="ba2"></p>

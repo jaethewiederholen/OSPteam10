@@ -5,13 +5,13 @@
 
 <?php include 'config.php'?> <!--config.php 삽입-->
 <style>
-/*.select{
+.select{
 width: 90%;
 margin: 10px auto;
 display: flex;
 align-items: center;
 justify-content: center;
-}*/
+}
 .searchform{
 margin: 10px auto;
 display: flex;
@@ -55,7 +55,6 @@ width: 30%;
   overflow: hidden;
   border-radius: .25em;
 }
-/*
 .sort {
   position: relative;
   display: flex;
@@ -66,7 +65,6 @@ width: 30%;
   overflow: hidden;
   border-radius: .25em;
 }
-*/
 .form-control {
   flex: 1;
   padding: 0 1.5em;
@@ -128,132 +126,21 @@ width: 30%;
 {
     color: #ffffff;
 }
-
-.write {
+	.Btn{
+    font-family: Noto Serif Telugu;
     border-radius:10px;
     border: 4px solid #4E5066;
     background-color: #ecbbb4;
     color: #4E5066;
     display: inline-block;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
     line-height: 24px;
     margin: auto;
-    padding: 12px 32px 12px 82px;
+    padding: 12px 32px 12px 32px;
     position: relative;
     text-decoration: none;
-}
-
-.write .label,
-.write .icon-arrow {
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    perspective: 1000;
-}
-
-.write .label {
-    display: inline-block;
-    transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1);
-}
-
-.write .icon-arrow {
-    fill: #4E5066;
-    height: 15px;
-    top: 17px;
-    transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1), opacity .4s cubic-bezier(0.86, 0, 0.07, 1);
-    width: 35px;
-}
-
-.write .icon-arrow.before {
-    left: 32px;
-    margin-right: 15px;
-    position: absolute;
-    transform-origin: left center;
-}
-
-.write .icon-arrow.after {
-    margin-left: 15px;
-    opacity: 0;
-    position: absolute;
-    right: 32px;
-    transform: translateX(75%) scaleX(0.1);
-    transform-origin: right center;
-}
-
-.write:hover .label {
-    transform: translateX(-52px);
-}
-
-.write:hover .icon-arrow.before {
-    opacity: 0;
-    transform: translateX(-75%) scaleX(0.1);
-}
-
-.write:hover .icon-arrow.after {
-    opacity: 1;
-    transform: translateX(0) scaleX(1);
-}
-
-.write:active {
-    border-color: #e7615a;
-    color: #e7615a;
-}
-
-.write:active .icon-arrow {
-    fill: #e7615a;
-}
-
-.si{
-font-family: Noto Serif Telugu;
-font-size: 20px;
-margin-top: -0.5%;
-text-align: right;
-}
-.na{
-font-family: Noto Serif Telugu;
-font-size: 25px;
-margin-top: -0.5%;
-text-align: center;
-}
-.desc{
-font-family: Noto Serif Telugu;
-font-size: 20px;
-margin-top: -0.5%;
-text-align: center;
-}
-.ma{
-background: #F7FFF2;
-}
-.tinyba{
-border: 1px solid #000000;
-margin-bottom: 1.5%;
-margin-top: -0.5%;
-width: 100%;
-}
-.outnpbox{
-width: 100%;
-margin-top: 3%;
-}
-.nppyeon{
-padding-bottom: 3px;
-padding-left: 3px;
-font-family: Noto Serif Telugu;
-font-weight: bold;
-font-size: 25px;
-color: #000000;
-}
-.npbox{
-background: rgba(234,175,175,0.25);
-}
-.leftnp{
-width: 15%;
-}
-
-<!DOCTYPE html>
-<html lang="ko">
-
-<?php include 'config.php'?> <!--config.php 삽입-->
-<style>
+	}
 
 .si{
 font-family: Noto Serif Telugu;
@@ -532,25 +419,9 @@ text-decoration:none
   </select>
 </div></div>
 
-  <div class = text align="center">
-  <button type=submit value="" class="write">
-      <svg class="icon-arrow before">
-          <use xlink:href="#arrow"></use>
-      </svg>
-      <div class="label" style="background-color:transparent; border:0px transparent solid;">편의점별 목록보기</div>
-      <svg class="icon-arrow after">
-          <use xlink:href="#arrow"></use>
-      </svg>
-  </button>
+<div class text align="center">
+<button type=submit" class="Btn">편의점별 목록보기</button>
 </div>
-  <svg style="display: none;">
-    <defs>
-      <symbol id="arrow" viewBox="0 0 35 15">
-        <title>Arrow</title>
-        <path d="M27.172 5L25 2.828 27.828 0 34.9 7.071l-7.07 7.071L25 11.314 27.314 9H0V5h27.172z "/>
-      </symbol>
-    </defs>
-  </svg>
 
 </form>
 <?php
