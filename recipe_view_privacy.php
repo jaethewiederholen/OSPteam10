@@ -213,7 +213,7 @@ td{
       환영합니다 <?php echo $_SESSION['userid'];?> 님 &nbsp/
       <a href="logOut.php" id="logout">로그아웃</a>
     <?php
-      } 
+      }
     ?>
     </p>
     <!--네비게이션-->
@@ -231,15 +231,16 @@ td{
 <main class="ma">
 
 <?php
-        $connect = mysqli_connect("127.0.0.1","team10","team10","team10");
+        $connect = mysqli_connect("localhost","team10","team10","team10");
         $number = $_GET['number'];
         $query = "SELECT title, content, ingredient, date, hit, id FROM recipe WHERE number =$number;";
         $result = mysqli_query($connect, $query);
         $rows = mysqli_fetch_assoc($result);
         $hit = "UPDATE recipe SET hit=hit+1 WHERE number=$number";
         $connect->query($hit);
+
 ?>
- 
+
   <div class= "container">
     <div class="board_read" id="board_read">
         <br><table>
@@ -259,9 +260,13 @@ td{
             <tr>
             <td colspan="12" style="height:300px; text-align:left; vertical-align:top;"><?php echo $rows['content']?></td>
             </tr>
+            <tr>
+            <td colspan="12" style="height:300px; text-align:left; vertical-align:top;">
+             <img src="<?php echo $rows['file']?>"></td>
+            </tr>
           </tbody>
         </table>
- 
+
         <!-- 목록으로 -->
         <div class="bttn">
                 <button class="btn-brackets" style="float:left; margin-right:50px;" onclick="location.href='./recipe_board.php'">목록으로</button>
