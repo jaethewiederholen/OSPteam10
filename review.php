@@ -22,13 +22,13 @@ include 'db_con.php';
       var cost="";
       var text="";
       $.post('review_sort.php', { sortby : inisort, cvs : cvs, item : item, cost : cost }, function(data){
-        //alert(data);
+        alert(data);
         data=JSON.parse(data);
         document.getElementById('list_table').innerHTML='<thead class="tbl-head"><tr><th>No</th><th>썸네일</th><th>제목</th><th>별점</th><th>작성자</th><th>작성일</th></tr></thead>';
         //alert("ajax completed: " + data);
         $.each(data,function(key,val){
-          //alert(val.num);
-          $('#list_table').append('<tbody class="tbl-content"><tr><td width="10%">'+ val.num + '</td><td width="20%"><img src="말표흑맥주.jpg" alt="" class="" style="height: 80px"/></td><td width="30%" ><span class="read_check" style="cursor:pointer" data-action="./review_read.php?num='+val.num+'">'+val.title+'</span></td><td width="10%">'+val.star+'</td><td width="10%">' + val.id + '</td><td width="20%">' + val.date + '</td></tr></tbody>');
+          alert(val.img);
+          $('#list_table').append('<tbody class="tbl-content"><tr><td width="10%">'+ val.num + '</td><td width="20%"><img src="'+val.img+'" class="" style="height: 80px"/></td><td width="30%" ><span class="read_check" style="cursor:pointer" data-action="./review_read.php?num='+val.num+'">'+val.title+'</span></td><td width="10%">'+val.star+'</td><td width="10%">' + val.id + '</td><td width="20%">' + val.date + '</td></tr></tbody>');
           $(".read_check").on("click", function () {
             var action_url = $(this).attr("data-action");
             $(location).attr("href",action_url);
@@ -44,7 +44,7 @@ include 'db_con.php';
           //alert("ajax completed: " + data);
           $.each(data,function(key,val){
             //alert(val.num);
-          $('#list_table').append('<tbody class="tbl-content"><tr><td width="10%">'+ val.num + '</td><td width="20%"><img src="말표흑맥주.jpg" alt="" class="" style="height: 80px"/></td><td width="30%" ><span class="read_check" style="cursor:pointer" data-action="./review_read.php?num='+val.num+'">'+val.title+'</span></td><td width="10%">'+val.star+'</td><td width="10%">' + val.id + '</td><td width="20%">' + val.date + '</td></tr></tbody>' + val.date + '</td></tr></tbody>');
+          $('#list_table').append('<tbody class="tbl-content"><tr><td width="10%">'+ val.num + '</td><td width="20%"><img src="'+val.image+'" alt="default_img.jpg" class="" style="height: 80px"/></td><td width="30%" ><span class="read_check" style="cursor:pointer" data-action="./review_read.php?num='+val.num+'">'+val.title+'</span></td><td width="10%">'+val.star+'</td><td width="10%">' + val.id + '</td><td width="20%">' + val.date + '</td></tr></tbody>' + val.date + '</td></tr></tbody>');
             $(".read_check").on("click", function () {
               var action_url = $(this).attr("data-action");
               $(location).attr("href",action_url);
@@ -81,6 +81,7 @@ include 'db_con.php';
         item = $(this).val();
         $.post('review_search.php', { sortby : sort, cvs : cvs, item : item, cost : cost, text : text }, function(data){
           data=JSON.parse(data);
+          alert(data);
           if(data=="") {
               document.getElementById('list_table').innerHTML='해당하는 검색결과가 없습니다!';
           }
