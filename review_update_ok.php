@@ -1,10 +1,16 @@
 <?php
 include "config.php";
 //include "db_con.php";
+ini_set("display_errors", "1");
+
+$uploaddir = 'C:\xampp\htdocs\osp\\';
+$uploadfile = $uploaddir . basename($_FILES['img']['name']);
+move_uploaded_file($_FILES['img']['tmp_name'],$uploadfile);
 
 $bno= $_POST['idx'];
 $id=$userid;
 $datetime=date('Y-m-d H:i:s');
+
 
 $conn=mysqli_connect("localhost", "team10", "team10","team10");
 
@@ -19,7 +25,7 @@ function rollback() {
 }
 
 
-$query = "update review set date='".$datetime."',cvs='".$_POST['cvs']."', item='".$_POST['item']."',cost='".$_POST['cost']."', star='".$_POST['star']."', title='".$_POST['title']."',content='".$_POST['content']."' where number='".$bno."'";
+$query = "update review set date='".$datetime."',cvs='".$_POST['cvs']."', item='".$_POST['item']."',cost='".$_POST['cost']."', star='".$_POST['star']."', title='".$_POST['title']."', image='".basename($_FILES['img']['name'])."',content='".$_POST['content']."' where number='".$bno."'";
 
 begin();
 $result=mysqli_query($conn,$query);
