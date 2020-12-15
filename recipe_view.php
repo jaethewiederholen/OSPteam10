@@ -1,6 +1,9 @@
 <!DOCTYPE HTML>
 <html lang="ko">
-<?php include 'config.php'?> <!--config.php 삽입-->
+<?php
+include 'config.php';
+include 'login_check.php';
+include 'db_con.php';?> <!--config.php 삽입-->
 <style>
 .bttn{
 padding: 1.5em;
@@ -230,32 +233,35 @@ td{
 <main class="ma">
 
 <?php
-        $connect = mysqli_connect("localhost","team10","team10","team10");
-        $number = $_GET['number'];
-        $query = "SELECT title, content, ingredient, date, hit, id FROM recipe WHERE number =$number;";
-        $result = mysqli_query($connect, $query);
-        $rows = mysqli_fetch_assoc($result);
-        $hit = "UPDATE recipe SET hit=hit+1 WHERE number=$number";
-        $connect->query($hit);
+$bno = $_GET['number'];
+$sql = mq("select * from recipe where number='".$bno."'
+");
+$board=$sql->fetch_array();
+
 ?>
+
   <div class= "container">
     <div class="board_read" id="board_read">
         <br><table>
           <thead>
             <tr>
-              <th colspan="12" style="text-align:center;"><h3><?php echo $rows['title']?></h3></th>
+              <th colspan="12" style="text-align:center;"><h3><?=$board['title']?></h3></th>
             </tr>
           </thead>
           <tbody class="tbl-content">
             <tr>
-              <td style="width:10%">작성자</td><td colspan="3" style="width:20%"><?php echo $rows['id']?></td>
-              <td style="width:10%">조회수</td> <td colspan="3" style="width:20%"><?php echo $rows['hit']?></td>
+              <td style="width:10%">작성자</td><td colspan="3" style="width:20%"><?=$board['id']?></td>
+              <td style="width:10%">조회수</td> <td colspan="3" style="width:20%"><?=$board['hit']?></td>
             </tr>
             <tr>
-              <td style="width:10%">재료</td> <td colspan="7" style="width:20%"><?php echo $rows['ingredient']?></td>
+              <td style="width:10%">재료</td> <td colspan="7" style="width:20%"><?=$board['ingredient']?></td>
             </tr>
             <tr>
-            <td colspan="12" style="height:300px; text-align:left; vertical-align:top;"><?php echo $rows['content']?></td>
+            <td colspan="12" style="height:300px; text-align:left; vertical-align:top;"><?=$board['content']?></td>
+            </tr>
+            <tr>
+            <td colspan="12" style="height:300px; text-align:left; vertical-align:top;">
+             <img src="<?=$board['file']?>"></td>
             </tr>
           </tbody>
         </table>
