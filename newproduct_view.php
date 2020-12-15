@@ -467,9 +467,9 @@ else{
 <td class="picknp"></br>
 
 <form method="post" action="like.php">
-<input type="checkbox" id="heart" value='<?=$name?>' name="product" />
+<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="visibility:hidden;" />
 <label for="heart">❤</label>
-<input type="submit" value="찜하기">
+<input type="submit" value="찜하기" style="visibility:hidden;">
 </form>
 
 <td class="leftnp" rowspan="4"></td>
@@ -530,9 +530,9 @@ else{
 <td class="picknp"></br>
 
 <form method="post" action="like.php">
-<input type="checkbox" id="heart" value='<?=$name?>' name="product" />
+<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="visibility:hidden;" />
 <label for="heart">❤</label>
-<input type="submit" value="찜하기">
+<input type="submit" value="찜하기" style="visibility:hidden;">
 </form>
 
 <td class="leftnp" rowspan="4"></td>
@@ -594,9 +594,9 @@ else{
 <td class="picknp"></br>
 
 <form method="post" action="like.php">
-<input type="checkbox" id="heart" value='<?=$name?>' name="product" />
+<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="visibility:hidden;" />
 <label for="heart">❤</label>
-<input type="submit" value="찜하기">
+<input type="submit" value="찜하기" style="visibility:hidden;">
 </form>
 
 <td class="leftnp" rowspan="4"></td>
@@ -658,9 +658,9 @@ else{
 <td class="picknp"></br>
 
 <form method="post" action="like.php">
-<input type="checkbox" id="heart" value='<?=$name?>' name="product" />
+<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="visibility:hidden;" />
 <label for="heart">❤</label>
-<input type="submit" value="찜하기">
+<input type="submit" value="찜하기" style="visibility:hidden;">
 </form>
 
 <td class="leftnp" rowspan="4"></td>
@@ -722,9 +722,9 @@ else{
 <td class="picknp"></br>
 
 <form method="post" action="like.php">
-<input type="checkbox" id="heart" value='<?=$name?>' name="product" />
+<input type="checkbox" id="heart" value='<?=$name?>' name="product" style="visibility:hidden;" />
 <label for="heart">❤</label>
-<input type="submit" value="찜하기">
+<input type="submit" value="찜하기" style="visibility:hidden;">
 </form>
 
 <td class="leftnp" rowspan="4"></td>
