@@ -164,9 +164,7 @@ text-align: center;
 background: #F7FFF2;
 }
 .tinyba{
-border: 1px solid #000000;
 margin-bottom: 1.5%;
-margin-top: -0.5%;
 width: 100%;
 }
 .outnpbox{
