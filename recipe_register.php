@@ -105,6 +105,7 @@ border:none;
   color: #000000;
 	font-size : 15px;
   cursor: pointer;
+border:none;
 }
 input[type="text"] {
   flex: 1;
@@ -335,7 +336,7 @@ td {
               <td colspan="2"><textarea class="form-control2" placeholder="글 내용" name="content" id="content" style="font-size : 15px; font-family: Noto Serif Telugu; padding: 13px; height:350px; width:850px;" required></textarea></td>
             </tr>
             <tr>
-              <td colspan="2"><input type = "file" name = "file" ></td>
+              <td colspan="2"><input type = "file" name = "file"></td>
             </tr>
             
           </tbody>
