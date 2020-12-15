@@ -11,9 +11,14 @@ $ingredient = $_POST['ingredient'];        //ingredient
 $content = $_POST['content'];              //Content
 $date = date('Y-m-d H:i:s');               //Date
 $URL = './recipe_board.php';               //return URL
+$tmpfile =  $_FILES['file']['tmp_name'];
+$o_name = $_FILES['file']['name'];
+$filename = iconv("UTF-8", "EUC-KR",$_FILES['file']['name']);
+$folder = "../../upload/".$filename;
+move_uploaded_file($tmpfile,$folder);
 
 $connect = mysqli_connect("localhost","team10","team10","team10") or die("fail");
-$query = "INSERT INTO recipe(number, title, ingredient, content, date, hit, id, password) VALUES (null, '$title', '$ingredient', '$content', '$date', 0, '$id', '$pw')";
+$query = "INSERT INTO recipe(number, title, ingredient, content, date, hit, id, file) VALUES (null, '$title', '$ingredient', '$content', '$date', 0, '$id', '$o_name')";
 $result = mysqli_query($connect, $query);
 if($result){
 ?>
