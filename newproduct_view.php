@@ -5,6 +5,203 @@
 
 <?php include 'config.php'?> <!--config.php 삽입-->
 <style>
+/*.select{
+width: 90%;
+margin: 10px auto;
+display: flex;
+align-items: center;
+justify-content: center;
+}*/
+.searchform{
+margin: 10px auto;
+display: flex;
+width: 30%;
+}
+.material-icons {
+    margin: -1px 5px 0 0;
+    vertical-align: middle;
+}
+.select-group{
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Reset Select */
+.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #B3E495;
+  background-image: none;
+}
+/* Remove IE arrow */
+.form-control::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+.select {
+  position: relative;
+  display: flex;
+  width: 10em;
+  height: 3em;
+  line-height: 3;
+  background: #B3E495;
+  overflow: hidden;
+  border-radius: .25em;
+}
+/*
+.sort {
+  position: relative;
+  display: flex;
+  width: 10em;
+  height: 3em;
+  line-height: 3;
+  background: #B3E495;
+  overflow: hidden;
+  border-radius: .25em;
+}
+*/
+.form-control {
+  flex: 1;
+  padding: 0 1.5em;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Arrow */
+.select::after {
+  color: #ffffff;
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #B3E495;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  color: #87d458;
+}
+.search-text, .search-btn
+{
+    color: #fff;
+    font-family: Nunito;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+#cover
+{
+    margin: 10px auto;
+    display: flex;
+    width: 450px;
+    padding: 35px;
+
+    background-color: #B3E495;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px #B3E495, 0 0 0 20px #ffffffeb;
+    transform: scale(0.6);
+}
+
+.search-text[type="text"]
+{
+    width: 100%;
+    height: 40px;
+    font-size: 30px;
+    line-height: 1;
+}
+
+.search-text[type="text"]::placeholder
+{
+    color: #ffffff;
+}
+
+.write {
+    border-radius:10px;
+    border: 4px solid #4E5066;
+    background-color: #ecbbb4;
+    color: #4E5066;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 24px;
+    margin: auto;
+    padding: 12px 32px 12px 82px;
+    position: relative;
+    text-decoration: none;
+}
+
+.write .label,
+.write .icon-arrow {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    perspective: 1000;
+}
+
+.write .label {
+    display: inline-block;
+    transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.write .icon-arrow {
+    fill: #4E5066;
+    height: 15px;
+    top: 17px;
+    transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1), opacity .4s cubic-bezier(0.86, 0, 0.07, 1);
+    width: 35px;
+}
+
+.write .icon-arrow.before {
+    left: 32px;
+    margin-right: 15px;
+    position: absolute;
+    transform-origin: left center;
+}
+
+.write .icon-arrow.after {
+    margin-left: 15px;
+    opacity: 0;
+    position: absolute;
+    right: 32px;
+    transform: translateX(75%) scaleX(0.1);
+    transform-origin: right center;
+}
+
+.write:hover .label {
+    transform: translateX(-52px);
+}
+
+.write:hover .icon-arrow.before {
+    opacity: 0;
+    transform: translateX(-75%) scaleX(0.1);
+}
+
+.write:hover .icon-arrow.after {
+    opacity: 1;
+    transform: translateX(0) scaleX(1);
+}
+
+.write:active {
+    border-color: #e7615a;
+    color: #e7615a;
+}
+
+.write:active .icon-arrow {
+    fill: #e7615a;
+}
 
 .si{
 font-family: Noto Serif Telugu;
@@ -323,7 +520,8 @@ text-decoration:none
 <main class="ma">
 <div class="tinyba"></div>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
-  <select name="chain">
+<div class="select-group"><div class="select">
+  <select name="chain" class="form-control" id="cvs_select">
     <option value="0"> 전체 </option>
     <option value="CU"> CU </option>
     <option value="GS25"> GS25 </option>
@@ -332,11 +530,32 @@ text-decoration:none
     <option value="미니스탑"> 미니스탑 </option>
     <option value="공용"> 공용 </option>
   </select>
-  <input type = submit value="검색">
-</form>
+</div></div>
 
+  <div class = text align="center">
+  <button type=submit value="" class="write">
+      <svg class="icon-arrow before">
+          <use xlink:href="#arrow"></use>
+      </svg>
+      <div class="label" style="background-color:transparent; border:0px transparent solid;">편의점별 목록보기</div>
+      <svg class="icon-arrow after">
+          <use xlink:href="#arrow"></use>
+      </svg>
+  </button>
+</div>
+  <svg style="display: none;">
+    <defs>
+      <symbol id="arrow" viewBox="0 0 35 15">
+        <title>Arrow</title>
+        <path d="M27.172 5L25 2.828 27.828 0 34.9 7.071l-7.07 7.071L25 11.314 27.314 9H0V5h27.172z "/>
+      </symbol>
+    </defs>
+  </svg>
+
+</form>
 <?php
 $connect = mysqli_connect("localhost","team10","team10","team10");
+$chain = isset($_POST['chain']) ? $_POST['chain'] : false;
 if(mysqli_connect_errno()){
       printf("Connect failed: %s\n", mysqli_connect_errno());
       exit();
