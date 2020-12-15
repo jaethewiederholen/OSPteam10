@@ -248,58 +248,6 @@ background: rgba(234,175,175,0.25);
 .leftnp{
 width: 15%;
 }
-
-<!DOCTYPE html>
-<html lang="ko">
-
-<?php include 'config.php'?> <!--config.php 삽입-->
-<style>
-
-.si{
-font-family: Noto Serif Telugu;
-font-size: 20px;
-margin-top: -0.5%;
-text-align: right;
-}
-.na{
-font-family: Noto Serif Telugu;
-font-size: 25px;
-margin-top: -0.5%;
-text-align: center;
-}
-.desc{
-font-family: Noto Serif Telugu;
-font-size: 20px;
-margin-top: -0.5%;
-text-align: center;
-}
-.ma{
-background: #F7FFF2;
-}
-.tinyba{
-border: 1px solid #000000;
-margin-bottom: 1.5%;
-margin-top: -0.5%;
-width: 100%;
-}
-.outnpbox{
-width: 100%;
-margin-top: 3%;
-}
-.nppyeon{
-padding-bottom: 3px;
-padding-left: 3px;
-font-family: Noto Serif Telugu;
-font-weight: bold;
-font-size: 25px;
-color: #000000;
-}
-.npbox{
-background: rgba(234,175,175,0.25);
-}
-.leftnp{
-width: 15%;
-}
 .npimg{
 width: 15%;
 text-align: center;
