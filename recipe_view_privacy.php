@@ -3,6 +3,30 @@
 <html lang="ko">
 <?php include 'config.php'?> <!--config.php 삽입-->
 <style>
+.bttn{
+padding: 1.5em;
+margin-left: 25%;
+}
+.btn-brackets {
+	display: block;
+	position: relative;
+	width: 120px;
+	padding: 0.6em;
+font-family: Noto Serif Telugu;
+font-size: 20px;
+font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #B3E495;
+	background: #fff;
+	border:4px solid #B3E495;
+}
+.btn-brackets:hover {
+	 background: #B3E495;
+         color: #fff;
+	 cursor: pointer;
+	 text-decoration: none;
+}
 .si{
 font-family: Noto Serif Telugu;
 font-size: 20px;
@@ -239,10 +263,10 @@ td{
         </table>
  
         <!-- 목록으로 -->
-        <div class="view_btn">
-                <button class="view_btn1" onclick="location.href='./recipe_board.php'">목록으로</button>
-                <button class="view_btn1" onclick="location.href='./recipe_modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">수정</button>
-                <button class="view_btn1" onclick="location.href='./recipe_delete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">삭제</button>
+        <div class="bttn">
+                <button class="btn-brackets" style="float:left; margin-right:50px;" onclick="location.href='./recipe_board.php'">목록으로</button>
+                <button class="btn-brackets" style="float:left; margin-right:50px;" onclick="location.href='./recipe_modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">수정</button>
+                <button class="btn-brackets" style="float:center;" onclick="location.href='./recipe_delete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">삭제</button>
         </div>
 </body>
 
