@@ -88,6 +88,7 @@ text-decoration:none
   color: #000000;
 	font-size : 15px;
   cursor: pointer;
+border:none;
 }
 .form-control1 {
   flex: 1;
@@ -96,6 +97,7 @@ text-decoration:none
   color: #000000;
 	font-size : 15px;
   cursor: pointer;
+border:none;
 }
 .form-control2 {
   flex: 1;
@@ -112,6 +114,7 @@ input[type="text"] {
   color: #000000;
 	font-size : 15px;
   cursor: pointer;
+border:none;
 }
 input[type="password"] {
   flex: 1;
@@ -120,6 +123,7 @@ input[type="password"] {
   color: #000000;
 	font-size : 15px;
   cursor: pointer;
+border:none;
 }
 .
 /* Arrow */
