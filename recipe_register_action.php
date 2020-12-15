@@ -15,10 +15,13 @@ $ingredient = $_POST['ingredient'];        //ingredient
 $content = $_POST['content'];              //Content
 $date = date('Y-m-d H:i:s');               //Date
 $URL = './recipe_board.php';               //return URL
+
 $image = basename($_FILES['img']['name']);
 
 $connect = mysqli_connect("localhost","team10","team10","team10") or die("fail");
 $query = "INSERT INTO recipe(number, title, ingredient, content, date, hit, id, file) VALUES (null, '$title', '$ingredient', '$content', '$date', 0, '$id', '$image')";
+
+
 $result = mysqli_query($connect, $query);
 if($result){
 ?>

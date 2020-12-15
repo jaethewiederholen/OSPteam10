@@ -3,6 +3,30 @@
 <html lang="ko">
 <?php include 'config.php'?> <!--config.php 삽입-->
 <style>
+.bttn{
+padding: 1.5em;
+margin-left: 25%;
+}
+.btn-brackets {
+	display: block;
+	position: relative;
+	width: 120px;
+	padding: 0.6em;
+font-family: Noto Serif Telugu;
+font-size: 20px;
+font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #B3E495;
+	background: #fff;
+	border:4px solid #B3E495;
+}
+.btn-brackets:hover {
+	 background: #B3E495;
+         color: #fff;
+	 cursor: pointer;
+	 text-decoration: none;
+}
 .si{
 font-family: Noto Serif Telugu;
 font-size: 20px;
@@ -106,6 +130,65 @@ background-color: white;
 border: 2px solid black;
 border-radius: 10px;
 }
+table{
+  width:90%;
+  table-layout: fixed;
+	background-color: #ecbbb4;
+	border-radius:10px;
+	padding:5px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tbl-content{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+th{
+  padding: 20px 15px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+	text-align:center;
+  font-weight: center;
+  font-size: 12px;
+  color:#4E5066;
+  text-transform: uppercase;
+}
+tr {
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+
+}
+.tbl-content{
+  background-color: rgba(255,255,255,0.1);
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+tr td:nth-child(odd){
+	color:#666B85;
+	border-radius:10px;
+	background-color: rgba(255,255,255,0.9);
+}
+tr td:nth-child(even){
+	color:#ffffff;
+	font-weight: bold;
+	font-size:18px;
+	border-radius:10px;
+	background-color: rgba(255,255,255,0.1);
+}
+td{
+	padding:20px;
+  text-align: center;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+}
 </style>
 
 <head>
@@ -156,35 +239,34 @@ border-radius: 10px;
         $hit = "UPDATE recipe SET hit=hit+1 WHERE number=$number";
         $connect->query($hit);
 ?>
-
-        <table class="view_table" align=center>
-        <tr>
-                <td colspan="4" class="view_title"><?php echo $rows['title']?></td>
-        </tr>
-        <tr>
-                <td class="view_id">작성자</td>
-                <td class="view_id2"><?php echo $rows['id']?></td>
-
-                <td class="view_hit">조회수</td>
-                <td class="view_hit2"><?php echo $rows['hit']?></td>
-        </tr>
-
-        <tr>
-        <td class="view_ingredient">재료</td>
-        <td class="view_ingredient2"><?php echo $rows['ingredient']?></td>
-        </tr>
-
-        <tr>
-                <td colspan="4" class="view_content" valign="top">
-                <?php echo $rows['content']?></td>
-        </tr>
+ 
+  <div class= "container">
+    <div class="board_read" id="board_read">
+        <br><table>
+          <thead>
+            <tr>
+              <th colspan="12" style="text-align:center;"><h3><?php echo $rows['title']?></h3></th>
+            </tr>
+          </thead>
+          <tbody class="tbl-content">
+            <tr>
+              <td style="width:10%">작성자</td><td colspan="3" style="width:20%"><?php echo $rows['id']?></td>
+              <td style="width:10%">조회수</td> <td colspan="3" style="width:20%"><?php echo $rows['hit']?></td>
+            </tr>
+            <tr>
+              <td style="width:10%">재료</td> <td colspan="7" style="width:20%"><?php echo $rows['ingredient']?></td>
+            </tr>
+            <tr>
+            <td colspan="12" style="height:300px; text-align:left; vertical-align:top;"><?php echo $rows['content']?></td>
+            </tr>
+          </tbody>
         </table>
 
         <!-- 목록으로 -->
-        <div class="view_btn">
-                <button class="view_btn1" onclick="location.href='./recipe_board.php'">목록으로</button>
-                <button class="view_btn1" onclick="location.href='./recipe_modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">수정</button>
-                <button class="view_btn1" onclick="location.href='./recipe_delete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">삭제</button>
+        <div class="bttn">
+                <button class="btn-brackets" style="float:left; margin-right:50px;" onclick="location.href='./recipe_board.php'">목록으로</button>
+                <button class="btn-brackets" style="float:left; margin-right:50px;" onclick="location.href='./recipe_modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">수정</button>
+                <button class="btn-brackets" style="float:center;" onclick="location.href='./recipe_delete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">삭제</button>
         </div>
 </body>
 
