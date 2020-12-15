@@ -25,6 +25,7 @@ while($board= mysqli_fetch_array($result_set)){
   $t->ingredient=$board['ingredient'];
   $t->id=$board['id'];
   $t->number=$board['number'];
+  $t->file=$board['file'];
   $o[]=($t);
   unset($t);
 }
