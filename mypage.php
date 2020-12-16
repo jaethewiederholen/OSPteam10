@@ -4,6 +4,32 @@
 <?php include 'config2.php'?> <!--config.php 삽입-->
 
 <style>
+  table{
+                border-top: 1px solid #444444;
+                border-collapse: collapse;
+        }
+        tr{
+                border-bottom: 1px solid #444444;
+                padding: 10px;
+        }
+        td{
+                border-bottom: 1px solid #efefef;
+                padding: 10px;
+        }
+        table .even{
+                background: #efefef;
+        }
+        .text{
+                text-align:center;
+                padding-top:20px;
+                color:#000000
+        }
+        .text:hover{
+                text-decoration: underline;
+        }
+        a:link {color : #57A0EE; text-decoration:none;}
+        a:hover { text-decoration : underline;}
+
 .si{
 font-family: Noto Serif Telugu;
 font-size: 20px;
@@ -81,11 +107,11 @@ margin: 20px auto;
 }
 .userimage{
 flex: 1;
-margin: 0px 5%;
+margin: 5px 10%;
 }
 .userinfo{
 flex: 3;
-margin: 0px 5%;
+margin: 20px 0%;
 }
 .InfoBtn{
     height:20px;
@@ -204,7 +230,7 @@ margin: 0px 5%;
       </div>
 
       <div class="graph">
-      <br><br><br><br><br>나의 편의점 이용률<br><br>
+      <br><br><br><b>나의 편의점 이용률</b><br><br>
       <?php
       $query ="SELECT id, cvs, COUNT('title')as cnt FROM review WHERE id = '$userid' GROUP BY cvs ORDER BY cnt DESC";
       $result = mysqli_query($connect, $query);
@@ -284,56 +310,101 @@ var myChart = new Chart(ctx, {
 </script>
 
 
-
       </div>
     </div>
 
     <div id="tab2" class="tabcontent" style="display: none;">
-    마이 레시피 LIST<br>
+    <center><br><b>마이 레시피 LIST</b><br>
     <?php
         $connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
         $query ="SELECT * from recipe WHERE id = '$userid'";
         $result = mysqli_query($connect, $query);
         $total = mysqli_num_rows($result);
-        while($rows = mysqli_fetch_assoc($result)){
-          ?>
-          &nbsp<i><?php echo $rows['date']?></i>
-          <a href = "recipe_view_privacy.php?number=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
-          <?php
-          $total--;
+        ?>
+        <table align = center>
+        <thead align = "center">
+        <tr>
+        <td width = "50" align="center">번호</td>
+        <td width = "500" align = "center">제목</td>
+        <td width = "200" align = "center">날짜</td>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+       while($rows = mysqli_fetch_assoc($result)){ ?>
+        <td width = "50" align = "center"><?php echo $total?></td>
+        <td width = "500" align = "center"><a href = "recipe_view_privacy.php?number=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
+        <td width = "200" align = "center"><?php echo $rows['date']?></td>
+        </tr>
+<?php
+        $total--;
         }
-    ?>
-    <br><br>마이 리뷰 LIST<br>
+?>
+       </tbody>
+       </table>
+
+
+    <br><br><b>마이 리뷰 LIST</b><br>
     <?php
        $query2 ="SELECT * from review WHERE id = '$userid'";
        $result2 = mysqli_query($connect, $query2);
        $total2 = mysqli_num_rows($result2);
-       while($rows = mysqli_fetch_assoc($result2)){
-         ?>
-         &nbsp<i><?php echo $rows['date']?></i>
-         <a href = "review_read.php?num=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
-         <?php
-         $total--;
-       }
+       ?>
+        <table align = center>
+        <thead align = "center">
+        <tr>
+        <td width = "50" align="center">번호</td>
+        <td width = "500" align = "center">제목</td>
+        <td width = "200" align = "center">날짜</td>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+       while($rows = mysqli_fetch_assoc($result2)){ ?>
+        <td width = "50" align = "center"><?php echo $total2?></td>
+        <td width = "500" align = "center"><a href = "review_read.php?num=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
+        <td width = "200" align = "center"><?php echo $rows['date']?></td>
+        </tr>
+<?php
+        $total2--;
+        }
+?>
+       </tbody>
+       </table>
 
-    ?>
+
     </div>
 
     <div id="tab3" class="tabcontent" style="display: none;">
-    마이 장바구니 LIST<br><br>
+  <p>
   <?php
    $query ="SELECT * from temp WHERE session_id = '$userid'";
    $result = mysqli_query($connect, $query);
    $total = mysqli_num_rows($result);
-        while($rows = mysqli_fetch_assoc($result)){
-           echo $rows['name']."<br>";
-           echo $rows['chain']."<br>";
-           echo $rows['price']."<br>";
-           echo $rows['content']."<br><br>";
-          $total--;
-        }
-
-  ?>
+   ?>
+   <table align = center>
+   <thead align = "center">
+   <tr>
+   <td width = "200" align="center">제품명</td>
+   <td width = "50" align = "center">판매처</td>
+   <td width = "50" align = "center">가격</td>
+   <td width = "800" align = "center">설명</td>
+   </tr>
+   </thead>
+   <tbody>
+   <?php
+  while($rows = mysqli_fetch_assoc($result)){ ?>
+   <td width = "200" align = "center"><?php echo $rows['name']?></td>
+   <td width = "50" align = "center"><?php echo $rows['chain']?></td>
+   <td width = "50" align = "center"><?php echo $rows['price']?></td>
+   <td width = "800" align = "center"><?php echo $rows['content']?></td>
+   </tr>
+<?php
+   $total--;
+   }
+?>
+  </tbody>
+  </table>
     </div>
 
   </div>
