@@ -208,6 +208,7 @@ while($board= mysqli_fetch_array($result_set)){
   if(strlen($t->title)>30){
     $t->title=str_replace($board['title'],mb_substr($board['title'],0,30,"utf-8")."...",$board['title']);
   }
+  $t->img=$board['image'];
   $t->star=$board['star'];
   $t->num=$board['number'];
   $t->id=$board['id'];

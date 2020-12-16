@@ -114,6 +114,7 @@ while($board= mysqli_fetch_array($result_set)){
     $t->title=str_replace($board['title'],mb_substr($board['title'],0,30,"utf-8")."...",$board['title']);
   }
   $t->star=$board['star'];
+  $t->img=$board['image'];
   $t->num=$board['number'];
   $t->id=$board['id'];
   $t->date=$board['date'];

@@ -284,7 +284,7 @@ td {
       환영합니다 <?php echo $_SESSION['userid'];?> 님 &nbsp/
       <a href="logOut.php" id="logout">로그아웃</a>
     <?php
-      } 
+      }
     ?>
     </p>
     <!--네비게이션-->
@@ -331,14 +331,15 @@ td {
             </tr>
             <tr>
              <td colspan="2"><input type ="text" style="width: 850px;" placeholder="재료" name = "ingredient"></td>
-            </tr> 
+            </tr>
             <tr>
               <td colspan="2"><textarea class="form-control2" placeholder="글 내용" name="content" id="content" style="font-size : 15px; font-family: Noto Serif Telugu; padding: 13px; height:350px; width:850px;" required></textarea></td>
             </tr>
             <tr>
-              <td colspan="2"><input type = "file" name = "file"></td>
+							<input type="hidden" name="MAX_FILE_SIZE" value="300000" />
+              <td><input type="file" name="img" id="imageFileOpenInput" accept="image/*"></td>
             </tr>
-            
+
           </tbody>
         </table>
         <!--<button type="submit" class="btn btn-primary">저장</button>-->
@@ -354,5 +355,3 @@ td {
 </footer>
 </body>
 </html>
-
-

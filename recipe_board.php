@@ -257,12 +257,12 @@
 	$(document).ready(function(){
 		var text="";
 		$.post('recipe_search.php', { text : text }, function(data){
-			//alert(data);
+		//	alert(data);
 			data=JSON.parse(data);
 			document.getElementById('here').innerHTML='';
 			$.each(data,function(key,val){
-				//alert(val.num);
-				$('#here').append('<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin-bottom : 30px"><div class="card"><div class="card-body text-center"><p><img class="card-img-top img-fluid" src="default_img.jpg"></p><h4 class="card-title">'+val.title+'</h4><p class="card-text"> 작성자 : ' + val.id + '</p><p class="card-text"> 재료 : ' +
+			//	alert(val.file);
+				$('#here').append('<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin-bottom : 30px"><div class="card"><div class="card-body text-center"><p><img class="card-img-top img-fluid" src="'+val.file+'"></p><h4 class="card-title">'+val.title+'</h4><p class="card-text"> 작성자 : ' + val.id + '</p><p class="card-text"> 재료 : ' +
 				val.ingredient + '</p><a href = "recipe_view.php?number='+val.number+'" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i</a></div></div></div>');
 					});
 			});
@@ -279,7 +279,7 @@
 				document.getElementById('here').innerHTML='';
 				$.each(data,function(key,val){
 					//alert(val.num);
-				$('#here').append('<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin-bottom : 30px"><div class="card"><div class="card-body text-center"><p><img class="card-img-top img-fluid" src="default_img.jpg"></p><h4 class="card-title">'+val.title+'</h4><p class="card-text"> 작성자 : ' + val.id + '</p><p class="card-text"> 재료 : ' +
+				$('#here').append('<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin-bottom : 30px"><div class="card"><div class="card-body text-center"><p><img class="card-img-top img-fluid" src='+val.file+'"></p><h4 class="card-title">'+val.title+'</h4><p class="card-text"> 작성자 : ' + val.id + '</p><p class="card-text"> 재료 : ' +
 				val.ingredient + '</p><a href = "recipe_view.php?number='+val.number+'" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i</a></div></div></div>');
 					});
 				}
