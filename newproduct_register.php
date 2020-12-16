@@ -84,7 +84,7 @@ color: #000000;
                         <option value="식품">식품</option>
                         <option value="음료">음료</option>    
                         <option value="스낵">스낵</option>  
-                        <option value="술">술</option> 
+                        <option value="아이스크림">아이스크림</option> 
                         <option value="생활용품">생활용품</option>     
                         </td>
                         </tr>
@@ -92,11 +92,12 @@ color: #000000;
                         <tr>
                         <td>구매점</td>
                         <td><select name="chain">
-                        <option value="CU">CU</option>
-                        <option value="GS25">GS25</option>    
-                        <option value="7ELEVEN">7ELEVEN</option>  
+                        <option value="CU">CU</option> 
+                        <option value="GS25">GS25</option> 
+                        <option value="7ELEVEN">7ELEVEN</option> 
                         <option value="이마트">이마트</option> 
-                        <option value="공용">공용</option>     
+                        <option value="미니스탑">미니스탑</option> 
+                        <option value="공용">공용</option> 
                         </td>
                         </tr>
 
