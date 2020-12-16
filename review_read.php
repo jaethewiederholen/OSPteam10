@@ -63,8 +63,9 @@ text-decoration:none
 }
 table{
   width:90%;
+	margin: 0 auto;
   table-layout: fixed;
-	background-color: #ecbbb4;
+	background-color: rgba(236,187,180,0.6);
 	border-radius:10px;
 	padding:5px;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -74,7 +75,7 @@ table{
   height:300px;
   overflow-x:auto;
   margin-top: 0px;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.5);
 }
 
 th{
@@ -83,7 +84,7 @@ th{
   vertical-align:middle;
 	text-align:center;
   font-weight: center;
-  font-size: 12px;
+  font-size: 17px;
   color:#4E5066;
   text-transform: uppercase;
 }
@@ -91,7 +92,6 @@ tr {
   font-size:16px;
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
-
 }
 .tbl-content{
   background-color: rgba(255,255,255,0.1);
@@ -101,13 +101,12 @@ tr {
   border: 1px solid rgba(255,255,255,0.3);
 }
 tr td:nth-child(odd){
-	color:#666B85;
+	color:#4E5066;
 	border-radius:10px;
 	background-color: rgba(255,255,255,0.9);
 }
 tr td:nth-child(even){
-	color:#ffffff;
-	font-weight: bold;
+	color:#4E5066;
 	font-size:18px;
 	border-radius:10px;
 	background-color: rgba(255,255,255,0.1);
@@ -120,6 +119,117 @@ td{
   font-size: 12px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
 }
+:root {
+  --backgroundColor: #F7FFF2;
+  --colorShadeA: #e19489;
+  --colorShadeB: #df8d81;
+  --colorShadeC: #e9b1a9;
+  --colorShadeD: #eec4be;
+  --colorShadeE: #f4d6d2;
+	--colour-black: rgba(30, 30, 30, 0.6);
+	--colour-white: #ffffff;
+}
+* {
+  box-sizing: border-box;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
+
+
+.big-button {
+	position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+	vertical-align: middle;
+	font-size: 20px;
+	font-weight: bold;
+	color:var(--colorShadeA);
+  padding: 1em 2em;
+  border: 2px solid var(--colorShadeA);
+  border-radius: 1em;
+  background: var(--colorShadeE);
+	transform-style: preserve-3d;
+   transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+.big-button::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--colorShadeC);
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
+ 	transform: translate3d(0, 0.75em, -1em);
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+
+.big-button:hover {
+  background: var(--colorShadeD);
+  transform: translate(0, 0.375em);
+}
+
+.big-button:hover::before {
+  transform: translate3d(0, 0.75em, -1em);
+}
+
+.big-button:active {
+            transform: translate(0em, 0.75em);
+}
+
+.big-button:active::before {
+  transform: translate3d(0, 0, -1em);
+      box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
+}
+.view_btn{
+	width: 90%;
+  margin: 10px auto;
+	padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list_button {
+  color: var(--colour-black);
+  --button: hsl(0, 0%, 79%);
+  --button-hover: hsl(0, 0%, 89%);
+  --button-active:  hsl(0, 0%, 69%);
+  --button-visited: hsl(0, 0%, 89%);
+  --button-colour: var(--colour-black);
+   --button-border: var(--colour-black);
+
+  padding: .5rem 1.2rem;
+  color: var(--button-colour);
+  font-weight: 500;
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+  background: var(--button);
+  border: solid 1px var(--button-border);
+  box-shadow: inset 0 0 0 2px var(--colour-white);
+  margin-left: 6em;
+}
+
+.list_button:hover {
+  text-decoration: underline;
+  background: var(--button-hover);
+  box-shadow: inset 0 0 0 4px var(--colour-white);
+}
+
+.list_button:active {
+  background: var(--button-active);
+}
+
+.list_button:visited {
+  background: var(--button-visited);
+}
+
+
 
 </style>
 
@@ -185,15 +295,14 @@ td{
 						</tr>
           </tbody>
         </table>
-        <br><button class="view_btn1" onclick="location.href='./review.php'">목록</button>
+        <br><button class="list_button" onclick="location.href='./review.php'">목록</button>
         <?php
         if ($userid==$board['id']) {
          ?>
 
          <div class="view_btn">
-
-                 <button class="view_btn1" onclick="location.href='./review_update.php?num=<?=$board['number']?>'">수정</button>
-                 <button class="view_btn1" onclick="location.href='./review_delete.php?num=<?=$board['number']?>'">삭제</button>
+                 <button class="big-button" onclick="location.href='./review_update.php?num=<?=$board['number']?>'">수정</button>
+                 <button class="big-button" onclick="location.href='./review_delete.php?num=<?=$board['number']?>'">삭제</button>
          </div>
          <br><br><br>
        <?php } ?>

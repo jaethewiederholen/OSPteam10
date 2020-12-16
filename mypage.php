@@ -170,6 +170,17 @@ td {
   margin:0 auto;
   text-align: center;
 }
+.table_1 tr{
+  border-bottom: 1px solid #444444;
+  padding: 10px;
+}
+.table_1 td{
+  border-bottom: 1px solid #efefef;
+  padding: 10px;
+}
+.table_1 .even{
+        background: #efefef;
+}
 .title_link:hover{
   font-weight: bold;
 }
@@ -412,7 +423,7 @@ var myChart = new Chart(ctx, {
       $result = mysqli_query($connect, $query);
       $total = mysqli_num_rows($result);
       ?>
-      <table align = center>
+      <table class="table_1" align = center>
       <thead align = "center">
       <tr>
       <td width = "50" align="center">번호</td>
@@ -424,7 +435,7 @@ var myChart = new Chart(ctx, {
       <?php
       while($rows = mysqli_fetch_assoc($result)){ ?>
       <td width = "50" align = "center"><?php echo $total?></td>
-      <td width = "500" align = "center"><a href = "recipe_view_privacy.php?number=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
+      <td width = "500" align = "center" class="title_link"><a href = "recipe_view_privacy.php?number=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
       <td width = "200" align = "center"><?php echo $rows['date']?></td>
       </tr>
       <?php
@@ -441,7 +452,7 @@ var myChart = new Chart(ctx, {
       $result2 = mysqli_query($connect, $query2);
       $total2 = mysqli_num_rows($result2);
       ?>
-       <table align = center>
+       <table class="table_1" align = center>
        <thead align = "center">
        <tr>
        <td width = "50" align="center">번호</td>
@@ -453,7 +464,7 @@ var myChart = new Chart(ctx, {
        <?php
       while($rows = mysqli_fetch_assoc($result2)){ ?>
        <td width = "50" align = "center"><?php echo $total2?></td>
-       <td width = "500" align = "center"><a href = "review_read.php?num=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
+       <td width = "500" align = "center" class="title_link"><a href = "review_read.php?num=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
        <td width = "200" align = "center"><?php echo $rows['date']?></td>
        </tr>
 <?php
