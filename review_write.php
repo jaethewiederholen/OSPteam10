@@ -270,7 +270,7 @@ td {
 <main class="ma">
   <div class= "container">
     <div class="board_wirte" id="board_write">
-      <form enctype="multipart/form-data" action="review_write_ok.php" method="post">
+      <form enctype="multipart/form-data" action="review_write_ok.php" method="post" enctype="multipart/form-data">
 				<br><table>
           <thead>
             <tr>
