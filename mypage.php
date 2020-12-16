@@ -4,32 +4,6 @@
 <?php include 'config2.php'?> <!--config.php 삽입-->
 
 <style>
-  table{
-                border-top: 1px solid #444444;
-                border-collapse: collapse;
-        }
-        tr{
-                border-bottom: 1px solid #444444;
-                padding: 10px;
-        }
-        td{
-                border-bottom: 1px solid #efefef;
-                padding: 10px;
-        }
-        table .even{
-                background: #efefef;
-        }
-        .text{
-                text-align:center;
-                padding-top:20px;
-                color:#000000
-        }
-        .text:hover{
-                text-decoration: underline;
-        }
-        a:link {color : #57A0EE; text-decoration:none;}
-        a:hover { text-decoration : underline;}
-
 .si{
 font-family: Noto Serif Telugu;
 font-size: 20px;
@@ -87,35 +61,117 @@ margin:20px auto
 .tablinks {
 float: left;
 width: 33.333%;
-height: 100%;
+height: 50px;
 border: none;
 outline: none;
 font-size: 16px;
 font-weight: bold;
-color: #000;
+color: #7f7f7f;
 background-color: #fff;
+}
+.tablinks:hover {
+  background:rgba(102,107,133,0.1);
+  color: #000;
 }
 .tablinks.active {
 color: #000;
 background-color: #F7FFF2;
+border-top: solid 1px black;
 }
 .info{
 width: 90%;
 height: 100px;
 display: flex;
 margin: 20px auto;
+margin-bottom: 80px;
 }
 .userimage{
 flex: 1;
-margin: 5px 10%;
+margin: 0px 5%;
+position: relative;
+top: 52px;
 }
 .userinfo{
 flex: 3;
-margin: 20px 0%;
+margin: 0px 5%;
 }
-.InfoBtn{
+.btn{
     height:20px;
     width:70px;
+}
+.graph{
+width: 90%;
+border-top: solid 1px #7d9f68;
+margin: 20px auto;
+}
+.graph_title{
+  margin: 20px auto;
+  margin-top: 50px;
+  font-size: 25px;
+  color:#7d9f68;
+  font-weight: bold;
+  text-align: center;
+}
+.graph_content{
+  display: flex;
+}
+.material-icons {
+    margin: -1px 5px 0 0;
+    vertical-align: middle;
+}
+
+td {
+    padding: 10px;
+  }
+:root{
+  --colour-black: rgba(30, 30, 30, 0.6);
+  --colour-white: #ffffff;
+}
+.btn_1 {
+  color: var(--colour-black);
+  --button: #d9f1ca;
+  --button-hover: hsl(0, 0%, 89%);
+  --button-active:  hsl(0, 0%, 69%);
+  --button-visited: hsl(0, 0%, 89%);
+  --button-colour: var(--colour-black);
+  --button-border: var(--colour-black);
+  height:auto;
+  width:100px;
+  padding: .5rem 1.2rem;
+  color: var(--button-colour);
+  font-weight: 500;
+  font-size: 12px;
+  transition: all 0.3s ease-in-out;
+  background: var(--button);
+  border: solid 1px var(--button-border);
+  box-shadow: inset 0 0 0 2px var(--colour-white);
+  margin-left: 6em;
+}
+
+.btn:hover {
+  text-decoration: underline;
+  background: var(--button-hover);
+  box-shadow: inset 0 0 0 4px var(--colour-white);
+}
+.btn:active {
+  background: var(--button-active);
+}
+.btn:visited {
+  background: var(--button-visited);
+}
+.title{
+  margin: 20px auto;
+  font-size: 25px;
+  color:#7d9f68;
+  font-weight: bold;
+  text-align: center;
+}
+.table_1{
+  margin:0 auto;
+  text-align: center;
+}
+.title_link:hover{
+  font-weight: bold;
 }
 </style>
 
@@ -124,6 +180,8 @@ margin: 20px 0%;
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>PyeonReview_마이페이지</title>
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 </head>
@@ -164,9 +222,9 @@ margin: 20px 0%;
   <div class="tab_wrap tab_area">
 
     <div class="btn_area clearfix">
-      <button class="tablinks active" onclick="openTab(event, 'tab1')">내 정보</button>
-      <button class="tablinks" onclick="openTab(event, 'tab2')">내 리뷰</button>
-      <button class="tablinks" onclick="openTab(event, 'tab3')">내 찜목록</button>
+      <button class="tablinks active" onclick="openTab(event, 'tab1')"><i class="material-icons">face</i>내 정보</button>
+      <button class="tablinks" onclick="openTab(event, 'tab2')"><i class="material-icons">comment</i>내 리뷰</button>
+      <button class="tablinks" onclick="openTab(event, 'tab3')"><i class="material-icons">favorite</i>내 찜목록</button>
     </div>
 
     <script>
@@ -186,62 +244,94 @@ margin: 20px 0%;
     </script>
 
     <div id="tab1" class="tabcontent" style="display: block;">
-      <div class="info">
+      <div class="info" style="height:auto">
         <div class="userimage">
-         <img src="user.png" width=120 height=120>
+          <?php
+          $connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
+          $query ="SELECT * from recipe WHERE id = '$userid'";
+          $result = mysqli_query($connect, $query);
+          $total_recipe = mysqli_num_rows($result);
+
+          $query2 ="SELECT * from review WHERE id = '$userid'";
+          $result2 = mysqli_query($connect, $query2);
+          $total_review = mysqli_num_rows($result2);
+          if($total_recipe<1 || $total_review<1) echo "<img src='lv1.png' width=120 height=120/>";
+          else if(1<=$total_recipe && 1<=$total_review) echo "<img src='lv2.png' width=120 height=120/>";
+          else if(2<=$total_recipe && 3<=$total_review) echo "<img src='lv3.png' width=120 height=120/>";
+          else if(3<=$total_recipe && 5<=$total_review) echo "<img src='lv4.png' width=120 height=120/>";
+
+        ?>
+         <!--<img src="user.png" width=120 height=120>-->
+         <!--<input type="file" name="img" id="imageFileOpenInput" accept="image/*">-->
         </div>
-
         <div class="userinfo">
-        <!--아이디-->
-          아이디: <?=$userid?><br>
-        <!--리뷰수/레시피수 -->
-        <?php
-        $connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
-        $query ="SELECT * from recipe WHERE id = '$userid'";
-        $result = mysqli_query($connect, $query);
-        $total_recipe = mysqli_num_rows($result);
+          <table>
+            <tbody>
+              <tr>
+                <td>아이디 :</td><td><?=$userid?></td>
+              </tr>
+              <?php
+              $connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
+              $query ="SELECT * from recipe WHERE id = '$userid'";
+              $result = mysqli_query($connect, $query);
+              $total_recipe = mysqli_num_rows($result);
 
-        $query2 ="SELECT * from review WHERE id = '$userid'";
-        $result2 = mysqli_query($connect, $query2);
-        $total_review = mysqli_num_rows($result2);
+              $query2 ="SELECT * from review WHERE id = '$userid'";
+              $result2 = mysqli_query($connect, $query2);
+              $total_review = mysqli_num_rows($result2);
 
-        echo"내 리뷰 수: $total_review 개<br>";
-        echo"내 레피시 수: $total_recipe 개<br>";
-        ?>
-
-        <?php
-        $level_gage = $total_recipe + $total_review;
-        if($total_recipe<1 || $total_review<1) $level = 'LV1';
-        else if(1<=$total_recipe && 1<=$total_review) $level = 'LV2';
-        else if(2<=$total_recipe && 3<=$total_review) $level = 'LV3';
-        else if(3<=$total_recipe && 5<=$total_review) $level = 'LV4';
-        echo"레벨: $level";
-        ?>
-
-         <button type="button" class="InfoBtn" onclick="window.open('./levelinfo.php', 'levelinfo', 'width=300, height=250')"> 등업기준 </button>
-
-        <!--비번변경 -->
-        <form method="post" action="password_update.php">
-        비밀번호 : <input type="password" size="10" name="newpw" placeholder="****">
-        <input type="submit" value="변경하기" />
-        </form>
-        <br>
+              //echo"내 리뷰 수: $total_review 개<br>";
+              //echo"내 레피시 수: $total_recipe 개<br>";
+              ?>
+                <td>내 리뷰 수 :</td><td><?=$total_review?> 개</td>
+              </tr>
+              <tr>
+                <td>내 레시피 수 :</td><td><?=$total_recipe?> 개</td>
+              </tr>
+              <?php
+              $level_gage = $total_recipe + $total_review;
+              if($total_recipe<1 || $total_review<1) $level = 'LV1';
+              else if(1<=$total_recipe && 1<=$total_review) $level = 'LV2';
+              else if(2<=$total_recipe && 3<=$total_review) $level = 'LV3';
+              else if(3<=$total_recipe && 5<=$total_review) $level = 'LV4';
+              //echo"레벨: $level";
+              ?>
+              <tr>
+                <td>내 레벨 :</td><td><?=$level?></td><td><button type="button" style="height:auto"class="btn_1" onclick="window.open('./levelinfo.php', 'levelinfo', 'width=400, height=350')"> 등업기준 </button></td>
+              </tr>
+              <tr>
+                <form method="post" action="password_update.php">
+                <td>비밀번호 : </td><td><input type="password" size="10" name="newpw" placeholder="****"></td><td><input class="btn_1" type="submit" value="변경하기" /></td></form>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
       <div class="graph">
-      <br><br><br><b>나의 편의점 이용률</b><br><br>
-      <?php
-      $query ="SELECT id, cvs, COUNT('title')as cnt FROM review WHERE id = '$userid' GROUP BY cvs ORDER BY cnt DESC";
-      $result = mysqli_query($connect, $query);
-      if($result){
-       while ($row=mysqli_fetch_array($result)){
-         $cvs=$row[1];
-         $cnt=$row[2];
-         echo $cvs;  echo $cnt."개<br>";
-       }
-   }
-      ?>
+        <div class="graph_title">
+        나의 편의점 이용률
+        </div>
+        <div class="graph_content">
+          <div style="position: relative; top: 150px;">
+            <table>
+          <?php
+          $query ="SELECT id, cvs, COUNT('title')as cnt FROM review WHERE id = '$userid' GROUP BY cvs ORDER BY cnt DESC";
+          $result = mysqli_query($connect, $query);
+          if($result){
+           while ($row=mysqli_fetch_array($result)){
+             $cvs=$row[1];
+             $cnt=$row[2];
+             ?><tr><td style="font-weight:bold;"><?php echo $cvs;?></td><td><?php echo $cnt;?>개</td></tr><?php
+           }
+          }
+          ?></table>
+          <script>
+
+          </script>
+          <table id="graph_table" cellpadding="0" cellspacing="0" border="0">
+          </table>
+ </div>
 
 <?php
 //header("Content-Type: text/html; charset=UTF-8");
@@ -258,10 +348,10 @@ while($row=mysqli_fetch_assoc($result)){
 
 
 ?>
-<div style="width:800px">
+<div style="width:800px; margin: 0 auto;">
     <canvas id="myChart"></canvas>
 </div>
-
+</div>
 <script>
 // 우선 컨텍스트를 가져옵니다.
 var ctx = document.getElementById("myChart").getContext('2d');
@@ -310,103 +400,89 @@ var myChart = new Chart(ctx, {
 </script>
 
 
+
       </div>
     </div>
 
     <div id="tab2" class="tabcontent" style="display: none;">
-    <center><br><b>마이 레시피 LIST</b><br>
-    <?php
-        $connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
-        $query ="SELECT * from recipe WHERE id = '$userid'";
-        $result = mysqli_query($connect, $query);
-        $total = mysqli_num_rows($result);
-        ?>
-        <table align = center>
-        <thead align = "center">
-        <tr>
-        <td width = "50" align="center">번호</td>
-        <td width = "500" align = "center">제목</td>
-        <td width = "200" align = "center">날짜</td>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-       while($rows = mysqli_fetch_assoc($result)){ ?>
-        <td width = "50" align = "center"><?php echo $total?></td>
-        <td width = "500" align = "center"><a href = "recipe_view_privacy.php?number=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
-        <td width = "200" align = "center"><?php echo $rows['date']?></td>
-        </tr>
+      <div class="title">마이 레시피 LIST</div>
+      <?php
+      $connect = mysqli_connect("localhost","team10","team10","team10") or die ("connect fail");
+      $query ="SELECT * from recipe WHERE id = '$userid'";
+      $result = mysqli_query($connect, $query);
+      $total = mysqli_num_rows($result);
+      ?>
+      <table align = center>
+      <thead align = "center">
+      <tr>
+      <td width = "50" align="center">번호</td>
+      <td width = "500" align = "center">제목</td>
+      <td width = "200" align = "center">날짜</td>
+      </tr>
+      </thead>
+      <tbody>
+      <?php
+      while($rows = mysqli_fetch_assoc($result)){ ?>
+      <td width = "50" align = "center"><?php echo $total?></td>
+      <td width = "500" align = "center"><a href = "recipe_view_privacy.php?number=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
+      <td width = "200" align = "center"><?php echo $rows['date']?></td>
+      </tr>
+      <?php
+      $total--;
+      }
+      ?>
+      </tbody>
+      </table>
+
+      <div style="border-top: solid 1px #7d9f68;margin: 20px auto;">
+      <div class="title" style="margin-top: 50px;">마이 리뷰 LIST</div>
+      <?php
+      $query2 ="SELECT * from review WHERE id = '$userid'";
+      $result2 = mysqli_query($connect, $query2);
+      $total2 = mysqli_num_rows($result2);
+      ?>
+       <table align = center>
+       <thead align = "center">
+       <tr>
+       <td width = "50" align="center">번호</td>
+       <td width = "500" align = "center">제목</td>
+       <td width = "200" align = "center">날짜</td>
+       </tr>
+       </thead>
+       <tbody>
+       <?php
+      while($rows = mysqli_fetch_assoc($result2)){ ?>
+       <td width = "50" align = "center"><?php echo $total2?></td>
+       <td width = "500" align = "center"><a href = "review_read.php?num=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
+       <td width = "200" align = "center"><?php echo $rows['date']?></td>
+       </tr>
 <?php
-        $total--;
-        }
+       $total2--;
+       }
 ?>
-       </tbody>
-       </table>
-
-
-    <br><br><b>마이 리뷰 LIST</b><br>
-    <?php
-       $query2 ="SELECT * from review WHERE id = '$userid'";
-       $result2 = mysqli_query($connect, $query2);
-       $total2 = mysqli_num_rows($result2);
-       ?>
-        <table align = center>
-        <thead align = "center">
-        <tr>
-        <td width = "50" align="center">번호</td>
-        <td width = "500" align = "center">제목</td>
-        <td width = "200" align = "center">날짜</td>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-       while($rows = mysqli_fetch_assoc($result2)){ ?>
-        <td width = "50" align = "center"><?php echo $total2?></td>
-        <td width = "500" align = "center"><a href = "review_read.php?num=<?php echo $rows['number']?>"><?php echo $rows['title']?></a><br>
-        <td width = "200" align = "center"><?php echo $rows['date']?></td>
-        </tr>
-<?php
-        $total2--;
-        }
-?>
-       </tbody>
-       </table>
-
-
+      </tbody>
+      </table>
+    </div>
     </div>
 
     <div id="tab3" class="tabcontent" style="display: none;">
-  <p>
-  <?php
-   $query ="SELECT * from temp WHERE session_id = '$userid'";
-   $result = mysqli_query($connect, $query);
-   $total = mysqli_num_rows($result);
-   ?>
-   <table align = center>
-   <thead align = "center">
-   <tr>
-   <td width = "200" align="center">제품명</td>
-   <td width = "50" align = "center">판매처</td>
-   <td width = "50" align = "center">가격</td>
-   <td width = "800" align = "center">설명</td>
-   </tr>
-   </thead>
-   <tbody>
-   <?php
-  while($rows = mysqli_fetch_assoc($result)){ ?>
-   <td width = "200" align = "center"><?php echo $rows['name']?></td>
-   <td width = "50" align = "center"><?php echo $rows['chain']?></td>
-   <td width = "50" align = "center"><?php echo $rows['price']?></td>
-   <td width = "800" align = "center"><?php echo $rows['content']?></td>
-   </tr>
-<?php
-   $total--;
-   }
-?>
-  </tbody>
-  </table>
-    </div>
+      <div class="title">마이 장바구니 LIST</div>
 
+      <?php
+       $query ="SELECT * from temp WHERE session_id = '$userid'";
+       $result = mysqli_query($connect, $query);
+       $total = mysqli_num_rows($result);
+            while($rows = mysqli_fetch_assoc($result)){
+              ?>
+               <table class="table_1" style="background: #fff; border-radius: 10px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); flex:1;width:300px;">
+                 <tr><td colspan="2" style="font-size:18px; font-weight:bold;"><i class="material-icons" style="color:#e495b3">favorite</i><?php echo $rows['name']?><i class="material-icons" style="color:#e495b3">favorite</i></td></tr>
+                 <tr><td><?php echo $rows['chain']?></td><td><?php echo $rows['price']?>원</td></tr>
+                 <tr style="height:100px; vertical-align:top;"><td colspan="2"><?php echo $rows['content']?></td></tr>
+               </table><?php
+              $total--;
+            }
+      ?>
+    </div>
   </div>
 
 <!-- opentab 함수 -->
