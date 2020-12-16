@@ -291,7 +291,7 @@ td{
             <td colspan="12" style="height : 300px; text-align:left; vertical-align: top;"><?=$board['content']?></td>
             </tr>
 						<tr>
-						<td colspan="12" style="height : 300px; text-align:left; vertical-align: top;"><img src = "<?=$board['image']?>"></td>
+						<td colspan="12" style="height : 300px; text-align:left; vertical-align: top;"><img src = "<?=$board['image']?>" height=300></td>
 						</tr>
           </tbody>
         </table>
