@@ -97,7 +97,7 @@ color: #000000;
                         <option value="7ELEVEN">7ELEVEN</option> 
                         <option value="이마트">이마트</option> 
                         <option value="미니스탑">미니스탑</option> 
-                        <option value="공용">공용</option> 
+                        <option value="공용">공용</option>
                         </td>
                         </tr>
 
