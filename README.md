@@ -8,7 +8,7 @@
 
 ## Project Objectives
 
-A review forum which has tje features below:
+A review forum which has the features below:
 
 Features
 - Member registration
