@@ -21,7 +21,6 @@ Features
 <br>It should have some kind of personalized visualization of logs/reviews
 
 
-
 ## Project Description
 
 Our project is a community web service that introduces new products from convenience stores and reviews onvenience stores products. There are five typical main functions.
