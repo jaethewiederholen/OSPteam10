@@ -12,13 +12,13 @@ A review forum which has tje features below:
 
 Features
 - Member registration
-It should allow member registration, logging in and out
+<br>It should allow member registration, logging in and out
 - Daily logs or reviews
-Users should be able to write, edit and delete their logs or reviews
+<br>Users should be able to write, edit and delete their logs or reviews
 - Keyword search 
-It should allow users to search specific content using keywords
+<br>It should allow users to search specific content using keywords
 - Visualization 
-It should have some kind of personalized visualization of logs/reviews
+<br>It should have some kind of personalized visualization of logs/reviews
 
 
 
