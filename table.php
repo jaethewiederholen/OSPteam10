@@ -6,6 +6,7 @@ if(mysqli_connect_errno()){
   exit();
 }
 else{
+  
   $sql="CREATE table member(
     id varchar(75) not null,
     pw varchar(75) not null,
@@ -23,6 +24,7 @@ else{
     printf("Could not create table: %s\n", mysqli_error($mysqli));
   }
 
+  
   $sql1="CREATE table recipe(
     number int unsigned not null primary key auto_increment,
     title varchar(150) not null,
@@ -41,6 +43,7 @@ else{
     printf("Could not create table: %s\n", mysqli_error($mysqli));
   }
 
+  
   $sql2="CREATE table newproduct(
    idx int unsigned not null primary key auto_increment,
    chain varchar(10) not null,
@@ -55,6 +58,24 @@ else{
   )";
 
   $res=mysqli_query($mysqli,$sql2);
+  if($res===TRUE){
+    echo "Table testTable successfully created.";
+  }
+  else{
+    printf("Could not create table: %s\n", mysqli_error($mysqli));
+  }
+  
+  
+   $sql3="CREATE table temp(
+   no int unsigned not null primary key auto_increment,
+   session_id varchar(20) not null,
+   name varchar(20) not null,
+   price int(6) not null,
+   content mediumtext not null,
+   chain varchar(10) not null
+  )";
+
+  $res=mysqli_query($mysqli,$sql3);
   if($res===TRUE){
     echo "Table testTable successfully created.";
   }
